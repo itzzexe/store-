@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF8FB8"/>
+      <stop offset="40%" style="stop-color:#E84393"/>
+      <stop offset="70%" style="stop-color:#C084FC"/>
+      <stop offset="100%" style="stop-color:#7C8CF8"/>
+    </linearGradient>
+  </defs>
+  <!-- Rounded rectangle frame -->
+  <path d="M 40 10 L 160 10 Q 190 10 190 40 L 190 160 Q 190 190 160 190 L 40 190 Q 10 190 10 160 L 10 40" 
+        fill="none" stroke="url(#logoGrad)" stroke-width="16" stroke-linecap="round"/>
+  <!-- Inner arrow/check shape -->
+  <path d="M 60 30 L 60 30" fill="none" stroke="url(#logoGrad)" stroke-width="16" stroke-linecap="round"/>
+  <polygon points="55,130 100,85 145,130" fill="url(#logoGrad)" transform="rotate(45, 100, 107)"/>
+</svg>

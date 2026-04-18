@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Breakout</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0a1a;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            font-family: 'Segoe UI', sans-serif;
+            color: #fff;
+            overflow: hidden;
+            touch-action: none;
+            user-select: none;
+        }
+
+        canvas {
+            border: 2px solid rgba(192, 132, 252, 0.3);
+            border-radius: 8px;
+            display: block;
+            max-width: 95vw;
+            max-height: 80vh;
+            cursor: pointer;
+        }
+
+        #msg {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #a78bfa;
+            text-align: center;
+            min-height: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="c"></canvas>
+    <div id="msg">Drag or use arrows to move paddle</div>
+    <script>
+        const c = document.getElementById('c'), ctx = c.getContext('2d'), msgEl = document.getElementById('msg');
+        let W = 420, H = 560; c.width = W; c.height = H;
+        const s = Math.min(window.innerWidth * 0.95, window.innerHeight * 0.78, W);
+        c.style.width = s + 'px'; c.style.height = (s * H / W) + 'px';
+
+        let paddle, ball, bricks, sc, lives, level, state, best = +localStorage.getItem('breakBest') || 0;
+        const brickRows = 6, brickCols = 8, brickW = W / brickCols - 4, brickH = 18;
+        const rowColors = ['#f472b6', '#c084fc', '#818cf8', '#38bdf8', '#34d399', '#facc15'];
+
+        function init() {
+            paddle = { x: W / 2 - 40, y: H - 40, w: 80, h: 12 };
+            ball = { x: W / 2, y: H - 60, r: 7, dx: 3, dy: -3 };
+            sc = 0; lives = 3; level = 1; state = 'ready';
+            makeBricks(); msgEl.textContent = 'Tap or press Space to start';
+        }
+
+        function makeBricks() {
+            bricks = [];
+            for (let r = 0; r < brickRows; r++) for (let col = 0; col < brickCols; col++) {
+                bricks.push({ x: col * (brickW + 4) + 2 + 2, y: r * (brickH + 4) + 40, w: brickW, h: brickH, alive: true, color: rowColors[r % rowColors.length] });
+            }
+        }
+
+        function launch() { state = 'playing'; ball.dy = -3 - level * 0.3; ball.dx = (Math.random() > 0.5 ? 1 : -1) * (2.5 + level * 0.2); }
+
+        let lastTime = 0;
+        function tick(time) {
+            if (!lastTime) lastTime = time;
+            if (time - lastTime < 16) { requestAnimationFrame(tick); return; }
+            lastTime = time;
+
+            if (state === 'playing') {
+                ball.x += ball.dx; ball.y += ball.dy;
+                // Walls
+                if (ball.x - ball.r < 0 || ball.x + ball.r > W) ball.dx *= -1;
+                if (ball.y - ball.r < 0) ball.dy *= -1;
+                // Bottom
+                if (ball.y + ball.r > H) { lives--; if (lives <= 0) { state = 'dead'; if (sc > best) { best = sc; localStorage.setItem('breakBest', best); } msgEl.textContent = `Game Over! Score: ${sc} | Best: ${best}`; } else { state = 'ready'; ball.x = paddle.x + paddle.w / 2; ball.y = H - 60; msgEl.textContent = `Lives: ${lives} — Tap to continue`; } }
+                // Paddle
+                if (ball.dy > 0 && ball.y + ball.r >= paddle.y && ball.x >= paddle.x && ball.x <= paddle.x + paddle.w && ball.y + ball.r <= paddle.y + paddle.h + 8) {
+                    ball.dy *= -1; ball.dx += (ball.x - (paddle.x + paddle.w / 2)) * 0.08; ball.y = paddle.y - ball.r;
+                }
+                // Bricks
+                bricks.forEach(b => {
+                    if (!b.alive) return;
+                    if (ball.x + ball.r > b.x && ball.x - ball.r < b.x + b.w && ball.y + ball.r > b.y && ball.y - ball.r < b.y + b.h) {
+                        b.alive = false; ball.dy *= -1; sc += 10;
+                    }
+                });
+                // Win level
+                if (bricks.every(b => !b.alive)) { level++; makeBricks(); state = 'ready'; ball.x = paddle.x + paddle.w / 2; ball.y = H - 60; msgEl.textContent = `Level ${level}! Tap to continue`; }
+            }
+            drawAll(); requestAnimationFrame(tick);
+        }
+
+        function drawAll() {
+            ctx.fillStyle = '#0f0f2a'; ctx.fillRect(0, 0, W, H);
+            // HUD
+            ctx.fillStyle = '#a78bfa'; ctx.font = '13px Segoe UI'; ctx.textAlign = 'left';
+            ctx.fillText(`Score: ${sc}`, 10, 22); ctx.textAlign = 'center'; ctx.fillText(`Level ${level}`, W / 2, 22);
+            ctx.textAlign = 'right'; ctx.fillText('♥'.repeat(lives), W - 10, 22);
+            // Bricks
+            bricks.forEach(b => {
+                if (!b.alive) return;
+                ctx.fillStyle = b.color; ctx.shadowColor = b.color; ctx.shadowBlur = 6;
+                ctx.beginPath(); ctx.roundRect(b.x, b.y, b.w, b.h, 4); ctx.fill();
+            });
+            ctx.shadowBlur = 0;
+            // Paddle
+            const pg = ctx.createLinearGradient(paddle.x, 0, paddle.x + paddle.w, 0);
+            pg.addColorStop(0, '#c084fc'); pg.addColorStop(1, '#818cf8');
+            ctx.fillStyle = pg; ctx.shadowColor = '#c084fc'; ctx.shadowBlur = 12;
+            ctx.beginPath(); ctx.roundRect(paddle.x, paddle.y, paddle.w, paddle.h, 6); ctx.fill();
+            ctx.shadowBlur = 0;
+            // Ball
+            ctx.fillStyle = '#f472b6'; ctx.shadowColor = '#f472b6'; ctx.shadowBlur = 15;
+            ctx.beginPath(); ctx.arc(ball.x, ball.y, ball.r, 0, Math.PI * 2); ctx.fill();
+            ctx.shadowBlur = 0;
+            // Ready/Dead overlay
+            if (state === 'ready' || state === 'dead') {
+                ctx.fillStyle = 'rgba(0,0,0,0.35)'; ctx.fillRect(0, 0, W, H);
+                ctx.fillStyle = state === 'dead' ? '#f472b6' : '#c084fc'; ctx.font = 'bold 26px Segoe UI'; ctx.textAlign = 'center';
+                ctx.fillText(state === 'dead' ? 'Game Over' : `Level ${level}`, W / 2, H / 2 - 20);
+                ctx.fillStyle = '#a78bfa'; ctx.font = '14px Segoe UI';
+                ctx.fillText(state === 'dead' ? 'Tap to retry' : 'Tap or Space to start', W / 2, H / 2 + 15);
+            }
+        }
+
+        // Keyboard
+        document.addEventListener('keydown', e => {
+            if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); if (state === 'ready') launch(); else if (state === 'dead') init(); }
+            if (e.key === 'ArrowLeft') { paddle.x = Math.max(0, paddle.x - 25); }
+            if (e.key === 'ArrowRight') { paddle.x = Math.min(W - paddle.w, paddle.x + 25); }
+        });
+
+        // Touch/Mouse drag
+        let dragging = false;
+        function movePaddle(ex) {
+            const rect = c.getBoundingClientRect();
+            const scale = W / rect.width;
+            paddle.x = Math.max(0, Math.min(W - paddle.w, (ex - rect.left) * scale - paddle.w / 2));
+            if (state === 'ready') ball.x = paddle.x + paddle.w / 2;
+        }
+        c.addEventListener('mousedown', e => { dragging = true; movePaddle(e.clientX); });
+        c.addEventListener('mousemove', e => { if (dragging) movePaddle(e.clientX); });
+        document.addEventListener('mouseup', () => dragging = false);
+        c.addEventListener('click', () => { if (state === 'ready') launch(); else if (state === 'dead') init(); });
+
+        c.addEventListener('touchstart', e => {
+            e.preventDefault(); movePaddle(e.touches[0].clientX);
+            if (state === 'ready') launch(); else if (state === 'dead') init();
+        }, { passive: false });
+        c.addEventListener('touchmove', e => { e.preventDefault(); movePaddle(e.touches[0].clientX); }, { passive: false });
+
+        init(); requestAnimationFrame(tick);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="آسيا ستور - سياسة الاسترجاع. استبدال واسترجاع سهل خلال 7 أيام">
+    <title>سياسة الاسترجاع | آسيا ستور - Asia Store</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Outfit:wght@300;400;500;600;700;900&family=Tajawal:wght@300;400;500;700;800;900&family=Bai+Jamjuree:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/pages.css">
+</head>
+
+<body>
+    <!-- Page Transition -->
+    <div class="page-transition">
+        <div class="panel"></div>
+        <div class="panel"></div>
+        <div class="panel"></div>
+        <div class="panel"></div>
+        <div class="panel"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="header__top">
+            <div class="container container--wide">
+                <div class="header__top-wrapper">
+                    <div class="header__utilities">
+                        <a href="#" class="header__util-link">
+                            <span class="header__util-icon">👤</span>
+                            <span class="header__util-text" data-i18n="nav_account">الحساب</span>
+                        </a>
+                        <a href="#" class="header__util-link" id="cartTrigger">
+                            <span class="header__util-icon">🛒</span>
+                            <span class="header__util-text" data-i18n="nav_cart">السلة</span>
+                            <span class="cart-count">0</span>
+                        </a>
+                    </div>
+                    <div class="header__search">
+                        <form class="search-bar">
+                            <input type="text" data-i18n-placeholder="search_placeholder" placeholder="ابحث عن المنتجات...">
+                            <button type="submit">🔍</button>
+                        </form>
+                    </div>
+                    <a href="../index.html" class="header__logo">
+                        <img src="../assets/logo.svg" alt="Asia Store Logo">
+                        <span class="header__logo-text">Asia Store</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="header__bottom">
+            <div class="container container--wide">
+                <nav class="header__nav" id="mainNav">
+                    <ul class="header__nav-list">
+                        <li><a href="../index.html" class="header__nav-link" data-i18n="nav_home">الرئيسية</a></li>
+                        <li><a href="products.html" class="header__nav-link" data-i18n="nav_products">المنتجات</a></li>
+                        <li><a href="about.html" class="header__nav-link" data-i18n="nav_about">من نحن</a></li>
+                        <li><a href="contact.html" class="header__nav-link" data-i18n="nav_contact">تواصل معنا</a></li>
+                    </ul>
+                    <div class="lang-switcher">
+                        <button class="lang-btn active" data-lang="ar">عربي</button>
+                        <button class="lang-btn" data-lang="en">EN</button>
+                    </div>
+                </nav>
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Support Hero -->
+    <section class="support-hero" style="background: var(--surface-alt); padding: var(--space-4xl) 0;">
+        <div class="container" style="text-align: center;">
+            <div class="support-hero__icon" style="font-size: 3.5rem; margin-bottom: var(--space-md);">🔄</div>
+            <span class="section-header__label" data-i18n="returns_hero_label">سياسة الاسترجاع</span>
+            <h1 class="section-header__title" style="font-size: var(--fs-hero);" data-i18n="returns_hero_title">استرجاع واستبدال سهل</h1>
+            <p class="section-header__subtitle" data-i18n="returns_hero_subtitle">رضاك هو أولويتنا. جعلنا عملية الاسترجاع بسيطة وشفافة.</p>
+        </div>
+    </section>
+
+    <!-- Content -->
+    <section class="section">
+        <div class="container container--narrow">
+             <div class="reveal" style="background: var(--color-white); padding: var(--space-2xl); border-radius: var(--radius-lg); border: 1px solid var(--color-gray-200);">
+                <p style="color: var(--color-gray-600); line-height: var(--lh-relaxed);" data-i18n="returns_intro">نفخر بتقديم خدمة استبدال واسترجاع مرنة تضمن حق العميل في اختيار المنتج المناسب له، وفقاً للشروط المتبعة.</p>
+             </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <img src="../assets/logo.svg" alt="Asia Store">
+                    <p data-i18n="footer_desc">وجهتك المميزة لأحدث الأجهزة الذكية وحلول التكنولوجيا المبتكرة منذ 2011.</p>
+                    <div class="footer__social">
+                        <a href="https://www.instagram.com/asia.store.iq" target="_blank" aria-label="Instagram">📷</a>
+                        <a href="https://www.facebook.com/share/1KiaEUe9XV" target="_blank" aria-label="Facebook">📘</a>
+                        <a href="https://www.tiktok.com/@asia.store24" target="_blank" aria-label="TikTok">🎵</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="footer__title" data-i18n="footer_quick">روابط سريعة</h4>
+                    <ul class="footer__links">
+                        <li><a href="../index.html" data-i18n="nav_home">الرئيسية</a></li>
+                        <li><a href="products.html" data-i18n="nav_products">المنتجات</a></li>
+                        <li><a href="about.html" data-i18n="nav_about">من نحن</a></li>
+                        <li><a href="contact.html" data-i18n="nav_contact">تواصل معنا</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer__title" data-i18n="footer_support">الدعم</h4>
+                    <ul class="footer__links">
+                        <li><a href="warranty.html" data-i18n="footer_warranty">سياسة الضمان</a></li>
+                        <li><a href="returns.html" data-i18n="footer_returns">الاسترجاع</a></li>
+                        <li><a href="faq.html" data-i18n="footer_faq">الأسئلة الشائعة</a></li>
+                        <li><a href="privacy.html" data-i18n="footer_privacy">سياسة الخصوصية</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer__title" data-i18n="footer_contact">معلومات التواصل</h4>
+                    <ul class="footer__links">
+                        <li>📍 بغداد – السبع أبكار</li>
+                        <li>📞 07746400400</li>
+                        <li>📞 07747400400</li>
+                        <li>🕒 10:00 ص – 10:00 م</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p data-i18n="footer_rights">© 2024 آسيا ستور. جميع الحقوق محفوظة.</p>
+                <p data-i18n="footer_tagline">حيث تبدأ التقنية بثقة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/i18n.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/cart.js"></script>
+</body>
+
+</html>

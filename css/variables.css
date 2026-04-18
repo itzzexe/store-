@@ -1,0 +1,119 @@
+/* ========================================
+   ASIA STORE - Design Tokens & Variables
+   Inspired by pointiraq.com - Professional Teal Theme
+   ======================================== */
+
+:root {
+  /* Primary Brand Colors */
+  --color-primary: #1bc6b4;
+  --color-primary-dark: #17a89a;
+  --color-primary-light: #48d1c3;
+  --color-secondary: #515D66;
+  --color-accent: #DD3842; /* Soft Red for sales */
+  --color-success: #28a745;
+  --color-warning: #ffc107;
+  --color-info: #17a2b8;
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #1bc6b4 0%, #17a89a 100%);
+  --gradient-soft: linear-gradient(180deg, #F1F5F6 0%, #FFFFFF 100%);
+  --gradient-text: linear-gradient(135deg, #1bc6b4, #515D66);
+  
+  /* Neutral Colors */
+  --color-white: #FFFFFF;
+  --color-offwhite: #F1F5F6;
+  --color-gray-100: #F8F9FA;
+  --color-gray-200: #E9ECEF;
+  --color-gray-300: #DEE2E6;
+  --color-gray-400: #CED4DA;
+  --color-gray-500: #ADB5BD;
+  --color-gray-600: #868E96;
+  --color-gray-700: #495057;
+  --color-gray-800: #343A40;
+  --color-gray-900: #212529;
+  --color-black: #000000;
+  
+  /* Surfaces */
+  --surface-main: #FFFFFF;
+  --surface-alt: #F1F5F6;
+  --surface-dark: #212529;
+  --surface-card: #FFFFFF;
+  
+  /* Typography */
+  --font-primary: 'Bai Jamjuree', 'Tajawal', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-arabic: 'Tajawal', 'Bai Jamjuree', sans-serif;
+  
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.875rem;
+  --fs-base: 1rem;
+  --fs-md: 1.125rem;
+  --fs-lg: 1.25rem;
+  --fs-xl: 1.5rem;
+  --fs-2xl: 2rem;
+  --fs-3xl: 2.5rem;
+  --fs-4xl: 3rem;
+  --fs-5xl: 3.5rem;
+  --fs-6xl: 4.5rem;
+  --fs-hero: clamp(2.2rem, 5vw, 4.5rem);
+  
+  --fw-light: 300;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  --fw-black: 800;
+  
+  --lh-tight: 1.1;
+  --lh-snug: 1.25;
+  --lh-normal: 1.5;
+  --lh-relaxed: 1.75;
+  
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+  --space-4xl: 6rem;
+  --space-5xl: 8rem;
+  --space-section: clamp(3rem, 8vw, 6rem);
+  
+  /* Border Radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-full: 9999px;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.05);
+  --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+  --shadow-xl: 0 20px 25px rgba(0,0,0,0.1);
+  --shadow-card: 0 0 20px rgba(0,0,0,0.05);
+  
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.25s ease;
+  --transition-slow: 0.4s ease;
+  
+  /* Z-Index */
+  --z-base: 1;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-header: 300;
+  --z-overlay: 400;
+  --z-modal: 500;
+  
+  /* Container */
+  --container-max: 1280px;
+  --container-wide: 1440px;
+  --container-narrow: 800px;
+  --container-padding: 1.5rem;
+}
+
+[dir="rtl"] {
+  --font-primary: var(--font-arabic);
+}

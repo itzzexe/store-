@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="آسيا ستور - تواصل معنا في بغداد، السبع أبكار. هاتف: 07746400400">
+    <title>تواصل معنا | آسيا ستور - Asia Store</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Outfit:wght@300;400;500;600;700;900&family=Tajawal:wght@300;400;500;700;800;900&family=Bai+Jamjuree:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/pages.css">
+</head>
+
+<body>
+    <!-- Page Transition -->
+    <div class="page-transition">
+        <div class="panel"></div>
+        <div class="panel"></div>
+        <div class="panel"></div>
+        <div class="panel"></div>
+        <div class="panel"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="header__top">
+            <div class="container container--wide">
+                <div class="header__top-wrapper">
+                    <div class="header__utilities">
+                        <a href="#" class="header__util-link" id="accountTrigger">
+                            <span class="header__util-icon">👤</span>
+                            <span class="header__util-text" data-i18n="nav_account">الحساب</span>
+                        </a>
+                        <a href="#" class="header__util-link" id="cartTrigger">
+                            <span class="header__util-icon">🛒</span>
+                            <span class="header__util-text" data-i18n="nav_cart">السلة</span>
+                            <span class="cart-count">0</span>
+                        </a>
+                    </div>
+                    <div class="header__search">
+                        <form class="search-bar">
+                            <input type="text" data-i18n-placeholder="search_placeholder" placeholder="ابحث عن المنتجات...">
+                            <button type="submit">🔍</button>
+                        </form>
+                    </div>
+                    <a href="../index.html" class="header__logo">
+                        <img src="../assets/logo.svg" alt="Asia Store Logo">
+                        <span class="header__logo-text">Asia Store</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="header__bottom">
+            <div class="container container--wide">
+                <nav class="header__nav" id="mainNav">
+                    <ul class="header__nav-list">
+                        <li><a href="../index.html" class="header__nav-link" data-i18n="nav_home">الرئيسية</a></li>
+                        <li><a href="products.html" class="header__nav-link" data-i18n="nav_products">المنتجات</a></li>
+                        <li><a href="about.html" class="header__nav-link" data-i18n="nav_about">من نحن</a></li>
+                        <li><a href="contact.html" class="header__nav-link active" data-i18n="nav_contact">تواصل معنا</a></li>
+                    </ul>
+                    <div class="lang-switcher">
+                        <button class="lang-btn active" data-lang="ar">عربي</button>
+                        <button class="lang-btn" data-lang="en">EN</button>
+                    </div>
+                </nav>
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contact Hero -->
+    <section class="contact-hero" style="background: var(--surface-alt); padding: var(--space-4xl) 0;">
+        <div class="container" style="text-align: center;">
+            <div class="section-header">
+                <span class="section-header__label" data-i18n="contact_hero_label">تواصل معنا</span>
+                <h1 class="section-header__title" style="font-size: var(--fs-hero);" data-i18n="contact_hero_title">اتصل بنا</h1>
+                <p class="section-header__subtitle" data-i18n="contact_hero_subtitle">يسعدنا سماعك. تواصل معنا عبر أي من قنواتنا.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Content -->
+    <section class="section">
+        <div class="container">
+            <div class="contact-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4xl);">
+                <!-- Left: Info Cards -->
+                <div class="contact-info-cards" style="display: flex; flex-direction: column; gap: var(--space-xl);">
+                    <!-- Location -->
+                    <div class="contact-info-card reveal" style="background: var(--color-white); padding: var(--space-xl); border-radius: var(--radius-lg); border: 1px solid var(--color-gray-200); display: flex; gap: var(--space-lg); align-items: start;">
+                        <div style="font-size: 2rem;">📍</div>
+                        <div>
+                            <h3 style="font-size: var(--fs-lg); font-weight: var(--fw-bold); margin-bottom: var(--space-xs);" data-i18n="contact_location_title">موقعنا</h3>
+                            <p style="color: var(--color-gray-600); font-size: var(--fs-md); line-height: var(--lh-relaxed);" data-i18n="contact_location_text">بغداد – السبع أبكار – الشارع العام – مجاور ثانوية الانتصار</p>
+                            <a href="https://maps.app.goo.gl/ENvk7UM61R91mKSx6" target="_blank" class="btn btn--sm btn--outline-dark" style="margin-top:var(--space-md);">
+                                🗺 Google Maps
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="contact-info-card reveal" style="background: var(--color-white); padding: var(--space-xl); border-radius: var(--radius-lg); border: 1px solid var(--color-gray-200); display: flex; gap: var(--space-lg); align-items: start;">
+                        <div style="font-size: 2rem;">📞</div>
+                        <div>
+                            <h3 style="font-size: var(--fs-lg); font-weight: var(--fw-bold); margin-bottom: var(--space-xs);" data-i18n="contact_phone_title">الهاتف والواتساب</h3>
+                            <p style="color: var(--color-gray-600); font-size: var(--fs-md);">
+                                <a href="tel:07746400400" dir="ltr">07746400400</a><br>
+                                <a href="tel:07747400400" dir="ltr">07747400400</a>
+                            </p>
+                            <a href="https://wa.me/9647746400400" target="_blank" class="btn btn--sm btn--primary" style="margin-top:var(--space-md);">
+                                💬 WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Contact Form -->
+                <div class="contact-form-container reveal" style="background: var(--color-white); padding: var(--space-2xl); border-radius: var(--radius-lg); border: 1px solid var(--color-gray-200); box-shadow: var(--shadow-sm);">
+                    <h2 style="font-size: var(--fs-xl); font-weight: var(--fw-bold); margin-bottom: var(--space-xl);" data-i18n="contact_hero_label">أرسل لنا رسالة</h2>
+                    <form onsubmit="event.preventDefault(); alert('شكراً لتواصلك! سنرد عليك في أقرب وقت.');">
+                        <div class="form-group" style="margin-bottom: var(--space-lg);">
+                            <label style="display: block; margin-bottom: var(--space-xs); font-weight: var(--fw-medium);" data-i18n="contact_form_name">الاسم الكامل</label>
+                            <input type="text" required style="width: 100%; padding: var(--space-sm); border: 1px solid var(--color-gray-300); border-radius: var(--radius-md);" placeholder="الاسم الكامل">
+                        </div>
+                        <div class="form-group" style="margin-bottom: var(--space-lg);">
+                            <label style="display: block; margin-bottom: var(--space-xs); font-weight: var(--fw-medium);" data-i18n="contact_form_email">البريد الإلكتروني</label>
+                            <input type="email" required style="width: 100%; padding: var(--space-sm); border: 1px solid var(--color-gray-300); border-radius: var(--radius-md);" placeholder="البريد الإلكتروني">
+                        </div>
+                        <div class="form-group" style="margin-bottom: var(--space-lg);">
+                            <label style="display: block; margin-bottom: var(--space-xs); font-weight: var(--fw-medium);" data-i18n="contact_form_message">رسالتك</label>
+                            <textarea required style="width: 100%; padding: var(--space-sm); border: 1px solid var(--color-gray-300); border-radius: var(--radius-md); min-height: 120px;" placeholder="رسالتك"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn--primary btn--lg" style="width:100%;" data-i18n="contact_form_submit">إرسال الرسالة</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <img src="../assets/logo.svg" alt="Asia Store">
+                    <p data-i18n="footer_desc">وجهتك المميزة لأحدث الأجهزة الذكية وحلول التكنولوجيا المبتكرة منذ 2011.</p>
+                    <div class="footer__social">
+                        <a href="https://www.instagram.com/asia.store.iq" target="_blank" aria-label="Instagram">📷</a>
+                        <a href="https://www.facebook.com/share/1KiaEUe9XV" target="_blank" aria-label="Facebook">📘</a>
+                        <a href="https://www.tiktok.com/@asia.store24" target="_blank" aria-label="TikTok">🎵</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="footer__title" data-i18n="footer_quick">روابط سريعة</h4>
+                    <ul class="footer__links">
+                        <li><a href="../index.html" data-i18n="nav_home">الرئيسية</a></li>
+                        <li><a href="products.html" data-i18n="nav_products">المنتجات</a></li>
+                        <li><a href="about.html" data-i18n="nav_about">من نحن</a></li>
+                        <li><a href="contact.html" data-i18n="nav_contact">تواصل معنا</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer__title" data-i18n="footer_support">الدعم</h4>
+                    <ul class="footer__links">
+                        <li><a href="warranty.html" data-i18n="footer_warranty">سياسة الضمان</a></li>
+                        <li><a href="returns.html" data-i18n="footer_returns">الاسترجاع</a></li>
+                        <li><a href="faq.html" data-i18n="footer_faq">الأسئلة الشائعة</a></li>
+                        <li><a href="privacy.html" data-i18n="footer_privacy">سياسة الخصوصية</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer__title" data-i18n="footer_contact">معلومات التواصل</h4>
+                    <ul class="footer__links">
+                        <li>📍 بغداد – السبع أبكار</li>
+                        <li>📞 07746400400</li>
+                        <li>📞 07747400400</li>
+                        <li>🕒 10:00 ص – 10:00 م</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p data-i18n="footer_rights">© 2024 آسيا ستور. جميع الحقوق محفوظة.</p>
+                <p data-i18n="footer_tagline">حيث تبدأ التقنية بثقة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/i18n.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/cart.js"></script>
+    <script src="../js/auth.js"></script>
+</body>
+
+</html>
