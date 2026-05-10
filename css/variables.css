@@ -1,74 +1,86 @@
 /* ========================================
    ASIA STORE - Design Tokens & Variables
-   Inspired by pointiraq.com - Professional Teal Theme
+   Premium Tech Store Theme
    ======================================== */
 
 :root {
-  /* Primary Brand Colors */
+  /* ---- Brand Colors ---- */
   --color-primary: #1bc6b4;
   --color-primary-dark: #17a89a;
-  --color-primary-light: #48d1c3;
+  --color-primary-light: #4dd9cc;
+  --color-primary-glow: rgba(27, 198, 180, 0.3);
   --color-secondary: #515D66;
-  --color-accent: #DD3842; /* Soft Red for sales */
-  --color-success: #28a745;
-  --color-warning: #ffc107;
-  --color-info: #17a2b8;
-  
-  /* Gradients */
+  --color-accent: #DD3842;
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+  --color-info: #3b82f6;
+
+  /* ---- Gradients ---- */
   --gradient-primary: linear-gradient(135deg, #1bc6b4 0%, #17a89a 100%);
+  --gradient-primary-h: linear-gradient(90deg, #1bc6b4 0%, #17a89a 100%);
+  --gradient-vibrant: linear-gradient(135deg, #1bc6b4 0%, #0ea5e9 100%);
   --gradient-soft: linear-gradient(180deg, #F1F5F6 0%, #FFFFFF 100%);
-  --gradient-text: linear-gradient(135deg, #1bc6b4, #515D66);
-  
-  /* Neutral Colors */
+  --gradient-dark: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  --gradient-hero: radial-gradient(ellipse at 70% 50%, rgba(27,198,180,0.08) 0%, transparent 60%),
+                   radial-gradient(ellipse at 30% 80%, rgba(23,168,154,0.05) 0%, transparent 50%);
+  --gradient-text: linear-gradient(135deg, #1bc6b4 0%, #0ea5e9 100%);
+  --gradient-card: linear-gradient(145deg, rgba(255,255,255,0.9), rgba(255,255,255,0.6));
+
+  /* ---- Neutral Colors ---- */
   --color-white: #FFFFFF;
-  --color-offwhite: #F1F5F6;
-  --color-gray-100: #F8F9FA;
-  --color-gray-200: #E9ECEF;
-  --color-gray-300: #DEE2E6;
-  --color-gray-400: #CED4DA;
-  --color-gray-500: #ADB5BD;
-  --color-gray-600: #868E96;
-  --color-gray-700: #495057;
-  --color-gray-800: #343A40;
-  --color-gray-900: #212529;
+  --color-offwhite: #F8FAFC;
+  --color-gray-50: #F8FAFC;
+  --color-gray-100: #F1F5F9;
+  --color-gray-200: #E2E8F0;
+  --color-gray-300: #CBD5E1;
+  --color-gray-400: #94A3B8;
+  --color-gray-500: #64748B;
+  --color-gray-600: #475569;
+  --color-gray-700: #334155;
+  --color-gray-800: #1E293B;
+  --color-gray-900: #0F172A;
   --color-black: #000000;
-  
-  /* Surfaces */
+
+  /* ---- Surfaces ---- */
   --surface-main: #FFFFFF;
-  --surface-alt: #F1F5F6;
-  --surface-dark: #212529;
+  --surface-alt: #F8FAFC;
   --surface-card: #FFFFFF;
-  
-  /* Typography */
+  --surface-glass: rgba(255, 255, 255, 0.7);
+  --surface-glass-border: rgba(255, 255, 255, 0.5);
+  --surface-dark: #0F172A;
+  --surface-dark-card: #1E293B;
+
+  /* ---- Typography ---- */
   --font-primary: 'Bai Jamjuree', 'Tajawal', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-arabic: 'Tajawal', 'Bai Jamjuree', sans-serif;
-  
-  --fs-xs: 0.75rem;
-  --fs-sm: 0.875rem;
-  --fs-base: 1rem;
-  --fs-md: 1.125rem;
-  --fs-lg: 1.25rem;
-  --fs-xl: 1.5rem;
-  --fs-2xl: 2rem;
-  --fs-3xl: 2.5rem;
-  --fs-4xl: 3rem;
-  --fs-5xl: 3.5rem;
-  --fs-6xl: 4.5rem;
-  --fs-hero: clamp(2.2rem, 5vw, 4.5rem);
-  
+  --font-display: 'Outfit', 'Tajawal', sans-serif;
+
+  --fs-xs: 0.75rem;    /* 12px */
+  --fs-sm: 0.875rem;   /* 14px */
+  --fs-base: 1rem;     /* 16px */
+  --fs-md: 1.125rem;   /* 18px */
+  --fs-lg: 1.25rem;    /* 20px */
+  --fs-xl: 1.5rem;     /* 24px */
+  --fs-2xl: 2rem;      /* 32px */
+  --fs-3xl: 2.5rem;    /* 40px */
+  --fs-4xl: 3rem;      /* 48px */
+  --fs-5xl: 4rem;      /* 64px */
+  --fs-6xl: 5rem;      /* 80px */
+  --fs-hero: clamp(2.4rem, 5.5vw, 4.5rem);
+
   --fw-light: 300;
   --fw-regular: 400;
   --fw-medium: 500;
   --fw-semibold: 600;
   --fw-bold: 700;
-  --fw-black: 800;
-  
+  --fw-black: 900;
+
   --lh-tight: 1.1;
-  --lh-snug: 1.25;
+  --lh-snug: 1.3;
   --lh-normal: 1.5;
   --lh-relaxed: 1.75;
-  
-  /* Spacing */
+
+  /* ---- Spacing ---- */
   --space-xs: 0.25rem;
   --space-sm: 0.5rem;
   --space-md: 1rem;
@@ -78,42 +90,63 @@
   --space-3xl: 4rem;
   --space-4xl: 6rem;
   --space-5xl: 8rem;
-  --space-section: clamp(3rem, 8vw, 6rem);
-  
-  /* Border Radius */
-  --radius-sm: 0.25rem;
-  --radius-md: 0.5rem;
+  --space-section: clamp(4rem, 8vw, 7rem);
+
+  /* ---- Border Radius ---- */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.625rem;
   --radius-lg: 1rem;
   --radius-xl: 1.5rem;
+  --radius-2xl: 2rem;
+  --radius-3xl: 2.5rem;
   --radius-full: 9999px;
-  
-  /* Shadows */
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
-  --shadow-md: 0 4px 6px rgba(0,0,0,0.05);
-  --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
-  --shadow-xl: 0 20px 25px rgba(0,0,0,0.1);
-  --shadow-card: 0 0 20px rgba(0,0,0,0.05);
-  
-  /* Transitions */
-  --transition-fast: 0.15s ease;
-  --transition-base: 0.25s ease;
-  --transition-slow: 0.4s ease;
-  
-  /* Z-Index */
+
+  /* ---- Shadows ---- */
+  --shadow-xs: 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04);
+  --shadow-md: 0 8px 24px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.04);
+  --shadow-lg: 0 20px 40px rgba(0,0,0,0.1), 0 8px 16px rgba(0,0,0,0.06);
+  --shadow-xl: 0 30px 60px rgba(0,0,0,0.12), 0 10px 30px rgba(0,0,0,0.08);
+  --shadow-card: 0 4px 20px rgba(0,0,0,0.06);
+  --shadow-primary: 0 10px 40px rgba(27, 198, 180, 0.3);
+  --shadow-primary-lg: 0 20px 60px rgba(27, 198, 180, 0.4);
+  --shadow-glow: 0 0 30px rgba(27, 198, 180, 0.25), 0 0 80px rgba(27, 198, 180, 0.1);
+  --shadow-inset: inset 0 1px 0 rgba(255,255,255,0.1);
+
+  /* ---- Transitions ---- */
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-spring: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  --transition-smooth: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* ---- Z-Index ---- */
+  --z-below: -1;
   --z-base: 1;
+  --z-raised: 10;
   --z-dropdown: 100;
   --z-sticky: 200;
   --z-header: 300;
   --z-overlay: 400;
   --z-modal: 500;
-  
-  /* Container */
+  --z-toast: 600;
+  --z-cursor: 9999;
+
+  /* ---- Container ---- */
   --container-max: 1280px;
   --container-wide: 1440px;
-  --container-narrow: 800px;
+  --container-narrow: 760px;
   --container-padding: 1.5rem;
+
+  /* ---- Border ---- */
+  --border-light: 1px solid var(--color-gray-100);
+  --border-base: 1px solid var(--color-gray-200);
+  --border-primary: 1px solid var(--color-primary-light);
+  --border-glass: 1px solid rgba(255,255,255,0.3);
 }
 
 [dir="rtl"] {
   --font-primary: var(--font-arabic);
 }
+
+/* Dark mode intentionally disabled — site uses white background with dark text */

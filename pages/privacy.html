@@ -4,23 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="آسيا ستور - سياسة الخصوصية. نحمي بياناتك وخصوصيتك بأمان">
+    <meta name="description" content="آسيا ستور - سياسة الخصوصية. نحمي بياناتك وخصوصيتك بأعلى معايير الأمان">
     <title>سياسة الخصوصية | آسيا ستور - Asia Store</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Outfit:wght@300;400;500;600;700;900&family=Tajawal:wght@300;400;500;700;800;900&family=Bai+Jamjuree:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Outfit:wght@300;400;500;600;700;900&family=Tajawal:wght@300;400;500;700;800;900&family=Bai+Jamjuree:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/variables.css">
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/animations.css">
     <link rel="stylesheet" href="../css/components.css">
     <link rel="stylesheet" href="../css/pages.css">
+    <link rel="stylesheet" href="../css/support-pages.css">
 </head>
 
 <body>
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+
     <!-- Page Transition -->
-    <div class="page-transition">
+    <div class="page-transition" id="pageTransition">
         <div class="panel"></div>
         <div class="panel"></div>
         <div class="panel"></div>
@@ -28,30 +31,40 @@
         <div class="panel"></div>
     </div>
 
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
     <!-- Header -->
     <header class="header" id="header">
+        <div class="header__info">
+            <div class="container container--wide">
+                <span>📞 اتصل بنا: 07746400400</span>
+                <span>🚚 توصيل داخل بغداد</span>
+                <span>✅ ضمان أصلي على جميع المنتجات</span>
+            </div>
+        </div>
         <div class="header__top">
             <div class="container container--wide">
                 <div class="header__top-wrapper">
                     <div class="header__utilities">
-                        <a href="#" class="header__util-link">
+                        <a href="#" class="header__util-link" id="authTrigger">
                             <span class="header__util-icon">👤</span>
-                            <span class="header__util-text" data-i18n="nav_account">الحساب</span>
+                            <span class="header__util-text">الحساب</span>
                         </a>
                         <a href="#" class="header__util-link" id="cartTrigger">
                             <span class="header__util-icon">🛒</span>
-                            <span class="header__util-text" data-i18n="nav_cart">السلة</span>
+                            <span class="header__util-text">السلة</span>
                             <span class="cart-count">0</span>
                         </a>
                     </div>
                     <div class="header__search">
-                        <form class="search-bar">
-                            <input type="text" data-i18n-placeholder="search_placeholder" placeholder="ابحث عن المنتجات...">
+                        <form class="search-bar" id="searchForm">
+                            <input type="text" id="searchInput" placeholder="ابحث عن المنتجات...">
                             <button type="submit">🔍</button>
                         </form>
                     </div>
                     <a href="../index.html" class="header__logo">
-                        <img src="../assets/logo.svg" alt="Asia Store Logo">
+                        <div class="header__logo-icon">A</div>
                         <span class="header__logo-text">Asia Store</span>
                     </a>
                 </div>
@@ -61,10 +74,11 @@
             <div class="container container--wide">
                 <nav class="header__nav" id="mainNav">
                     <ul class="header__nav-list">
-                        <li><a href="../index.html" class="header__nav-link" data-i18n="nav_home">الرئيسية</a></li>
-                        <li><a href="products.html" class="header__nav-link" data-i18n="nav_products">المنتجات</a></li>
-                        <li><a href="about.html" class="header__nav-link" data-i18n="nav_about">من نحن</a></li>
-                        <li><a href="contact.html" class="header__nav-link" data-i18n="nav_contact">تواصل معنا</a></li>
+                        <li><a href="../index.html" class="header__nav-link">الرئيسية</a></li>
+                        <li><a href="products.html" class="header__nav-link">المنتجات</a></li>
+                        <li><a href="about.html" class="header__nav-link">من نحن</a></li>
+                        <li><a href="contact.html" class="header__nav-link">تواصل معنا</a></li>
+                        <li><a href="games.html" class="header__nav-link">ألعاب</a></li>
                     </ul>
                     <div class="lang-switcher">
                         <button class="lang-btn active" data-lang="ar">عربي</button>
@@ -79,22 +93,162 @@
     </header>
 
     <!-- Support Hero -->
-    <section class="support-hero" style="background: var(--surface-alt); padding: var(--space-4xl) 0;">
-        <div class="container" style="text-align: center;">
-            <div class="support-hero__icon" style="font-size: 3.5rem; margin-bottom: var(--space-md);">🔐</div>
-            <span class="section-header__label" data-i18n="privacy_hero_label">سياسة الخصوصية</span>
-            <h1 class="section-header__title" style="font-size: var(--fs-hero);" data-i18n="privacy_hero_title">خصوصيتك تهمنا</h1>
-            <p class="section-header__subtitle" data-i18n="privacy_hero_subtitle">نحن ملتزمون بحماية معلوماتك الشخصية والشفافية في كيفية استخدامها.</p>
+    <section class="support-hero">
+        <div class="container" style="text-align: center; position: relative; z-index: 1;">
+            <div class="support-hero__icon">🔐</div>
+            <span class="section-header__label">سياسة الخصوصية</span>
+            <h1 class="section-header__title" style="font-size: var(--fs-hero);">خصوصيتك تهمنا</h1>
+            <p class="section-header__subtitle">نحن ملتزمون بحماية معلوماتك الشخصية والشفافية الكاملة في كيفية استخدامها.</p>
+            <p class="support-updated">آخر تحديث: مايو 2025</p>
         </div>
     </section>
 
-    <!-- Content -->
+    <!-- Privacy Highlights -->
+    <section class="section" style="padding: var(--space-2xl) 0; background: var(--color-white); border-bottom: 1px solid var(--color-gray-100);">
+        <div class="container">
+            <div class="support-cards-grid--4 reveal">
+                <div class="support-info-card">
+                    <span class="support-info-card__icon">🔒</span>
+                    <div class="support-info-card__title">حماية البيانات</div>
+                    <div class="support-info-card__desc">نحمي بياناتك بأعلى معايير الأمان المتاحة</div>
+                </div>
+                <div class="support-info-card">
+                    <span class="support-info-card__icon">🚫</span>
+                    <div class="support-info-card__title">لا مشاركة لأطراف ثالثة</div>
+                    <div class="support-info-card__desc">لا نبيع أو نشارك بياناتك مع أي طرف خارجي</div>
+                </div>
+                <div class="support-info-card">
+                    <span class="support-info-card__icon">👁️</span>
+                    <div class="support-info-card__title">شفافية كاملة</div>
+                    <div class="support-info-card__desc">نخبرك بدقة بما نجمعه وكيف نستخدمه</div>
+                </div>
+                <div class="support-info-card">
+                    <span class="support-info-card__icon">✅</span>
+                    <div class="support-info-card__title">حق التحكم</div>
+                    <div class="support-info-card__desc">لك الحق الكامل في الوصول إلى بياناتك وحذفها</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Privacy Content -->
     <section class="section">
         <div class="container container--narrow">
-             <div class="reveal" style="background: var(--color-white); padding: var(--space-2xl); border-radius: var(--radius-lg); border: 1px solid var(--color-gray-200);">
-                <h3 style="margin-bottom: var(--space-md);" data-i18n="privacy_intro_title">مقدمة</h3>
-                <p style="color: var(--color-gray-600); line-height: var(--lh-relaxed);" data-i18n="privacy_intro_desc">آسيا ستور ملتزمة بحماية خصوصية وأمان معلوماتك الشخصية.</p>
-             </div>
+
+            <!-- Section 1 -->
+            <div class="privacy-section reveal">
+                <h2 class="privacy-section__title">1. المعلومات التي نجمعها</h2>
+                <p class="privacy-section__text">نقوم بجمع المعلومات التالية عند تفاعلك مع آسيا ستور:</p>
+                <ul class="privacy-section__list">
+                    <li>الاسم الكامل ورقم الهاتف عند إجراء طلب شراء</li>
+                    <li>عنوان التوصيل لإتمام عمليات التوصيل</li>
+                    <li>معلومات الدفع (رقم الفاتورة، طريقة الدفع) دون تفاصيل بطاقات بنكية</li>
+                    <li>تاريخ الطلبات والمنتجات المشتراة لأغراض خدمة الضمان</li>
+                    <li>معلومات التواصل عبر واتساب أو وسائل التواصل الاجتماعي</li>
+                </ul>
+            </div>
+
+            <!-- Section 2 -->
+            <div class="privacy-section reveal">
+                <h2 class="privacy-section__title">2. كيف نستخدم معلوماتك</h2>
+                <p class="privacy-section__text">نستخدم المعلومات التي نجمعها للأغراض التالية فقط:</p>
+                <ul class="privacy-section__list">
+                    <li>إتمام عمليات الشراء والتوصيل وخدمة العملاء</li>
+                    <li>تقديم خدمة الضمان والصيانة بشكل صحيح</li>
+                    <li>الرد على استفساراتك وطلباتك</li>
+                    <li>إرسال إشعارات بالعروض والمنتجات الجديدة (بموافقتك فقط)</li>
+                    <li>تحسين خدماتنا وتجربة العملاء بشكل عام</li>
+                </ul>
+            </div>
+
+            <!-- Section 3 -->
+            <div class="privacy-section reveal">
+                <h2 class="privacy-section__title">3. حماية معلوماتك</h2>
+                <p class="privacy-section__text">نتخذ إجراءات صارمة لحماية بياناتك الشخصية:</p>
+                <ul class="privacy-section__list">
+                    <li>تخزين البيانات على أنظمة آمنة مع وصول محدود للموظفين المخولين فقط</li>
+                    <li>عدم الاحتفاظ ببيانات البطاقات البنكية أو المعلومات المالية الحساسة</li>
+                    <li>مراجعة دورية لإجراءات الأمان والخصوصية</li>
+                    <li>تدريب فريقنا على أهمية حماية بيانات العملاء</li>
+                    <li>حذف البيانات عند انتهاء الحاجة إليها وفق السياسات المعمول بها</li>
+                </ul>
+            </div>
+
+            <!-- Section 4 -->
+            <div class="privacy-section reveal">
+                <h2 class="privacy-section__title">4. مشاركة المعلومات مع أطراف أخرى</h2>
+                <p class="privacy-section__text">لا نبيع أو نتاجر أو نشارك معلوماتك الشخصية مع أطراف خارجية تجارياً. قد نشارك بياناتك في الحالات التالية فقط:</p>
+                <ul class="privacy-section__list">
+                    <li>شركات الشحن والتوصيل (الاسم والعنوان فقط لإتمام التوصيل)</li>
+                    <li>مراكز الصيانة المعتمدة (عند الحاجة لتفعيل الضمان)</li>
+                    <li>الجهات القانونية عند الضرورة القانونية وبموجب أوامر قضائية</li>
+                </ul>
+            </div>
+
+            <!-- Section 5 -->
+            <div class="privacy-section reveal">
+                <h2 class="privacy-section__title">5. ملفات تعريف الارتباط (Cookies)</h2>
+                <p class="privacy-section__text">موقعنا قد يستخدم ملفات تعريف الارتباط لتحسين تجربة التصفح:</p>
+                <ul class="privacy-section__list">
+                    <li>حفظ تفضيلات اللغة والعملة</li>
+                    <li>الاحتفاظ بمحتوى سلة التسوق</li>
+                    <li>تحسين أداء الموقع وسرعة تحميله</li>
+                    <li>يمكنك تعطيل ملفات الكوكيز من إعدادات متصفحك في أي وقت</li>
+                </ul>
+            </div>
+
+            <!-- Section 6 -->
+            <div class="privacy-section reveal">
+                <h2 class="privacy-section__title">6. حقوقك كمستخدم</h2>
+                <p class="privacy-section__text">لديك الحق الكامل في:</p>
+                <ul class="privacy-section__list">
+                    <li>الوصول إلى معلوماتك الشخصية التي نحتفظ بها</li>
+                    <li>طلب تصحيح أي معلومات غير صحيحة</li>
+                    <li>طلب حذف معلوماتك من قاعدة بياناتنا</li>
+                    <li>الانسحاب من قوائم الرسائل الترويجية في أي وقت</li>
+                    <li>الاعتراض على أي استخدام لبياناتك لا يتوافق مع هذه السياسة</li>
+                </ul>
+            </div>
+
+            <!-- Section 7 -->
+            <div class="privacy-section reveal">
+                <h2 class="privacy-section__title">7. وسائل التواصل الاجتماعي</h2>
+                <p class="privacy-section__text">عند تواصلك معنا عبر منصات التواصل الاجتماعي (واتساب، إنستغرام، فيسبوك، تيك توك)، تخضع تلك التفاعلات أيضاً لسياسات خصوصية تلك المنصات. ننصحك بمراجعة سياسات كل منصة على حدة.</p>
+            </div>
+
+            <!-- Section 8 -->
+            <div class="privacy-section reveal">
+                <h2 class="privacy-section__title">8. تحديثات سياسة الخصوصية</h2>
+                <p class="privacy-section__text">قد نحدّث هذه السياسة من وقت لآخر لتعكس التغييرات في ممارساتنا أو متطلبات التشريعات. سيتم نشر أي تحديثات على هذه الصفحة مع تحديث تاريخ "آخر تحديث". ننصحك بمراجعة هذه الصفحة بشكل دوري.</p>
+            </div>
+
+            <!-- Section 9 -->
+            <div class="privacy-section reveal" style="border-color: rgba(27, 198, 180, 0.3); background: rgba(27, 198, 180, 0.03);">
+                <h2 class="privacy-section__title" style="color: var(--color-primary);">9. تواصل معنا بشأن الخصوصية</h2>
+                <p class="privacy-section__text">إذا كانت لديك أي أسئلة أو مخاوف بشأن سياسة الخصوصية أو كيفية معالجة بياناتك، يمكنك التواصل معنا:</p>
+                <ul class="privacy-section__list">
+                    <li>واتساب: 07746400400</li>
+                    <li>هاتف: 07747400400</li>
+                    <li>زيارة المتجر: بغداد – السبع أبكار</li>
+                    <li>أوقات الدوام: 10:00 ص – 10:00 م يومياً</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section" style="background: var(--color-gray-50);">
+        <div class="container">
+            <div class="support-cta reveal">
+                <span style="font-size: 3rem; display: block; margin-bottom: var(--space-md);">💬</span>
+                <h2 style="font-size: var(--fs-2xl); font-weight: var(--fw-bold); color: var(--color-gray-900); margin-bottom: var(--space-sm);">هل لديك سؤال حول خصوصيتك؟</h2>
+                <p style="color: var(--color-gray-600); margin-bottom: var(--space-xl);">فريقنا جاهز للإجابة على جميع استفساراتك</p>
+                <a href="https://wa.me/9647746400400" target="_blank" class="btn btn--primary magnetic" style="display: inline-flex; align-items: center; gap: 8px;">
+                    <span>📱</span>
+                    <span>تواصل معنا عبر واتساب</span>
+                </a>
+            </div>
         </div>
     </section>
 
@@ -103,37 +257,38 @@
         <div class="container">
             <div class="footer__grid">
                 <div class="footer__brand">
-                    <img src="../assets/logo.svg" alt="Asia Store">
-                    <p data-i18n="footer_desc">وجهتك المميزة لأحدث الأجهزة الذكية وحلول التكنولوجيا المبتكرة منذ 2011.</p>
+                    <div class="footer__logo">
+                        <div class="header__logo-icon">A</div>
+                        <span>Asia Store</span>
+                    </div>
+                    <p>وجهتك المميزة لأحدث الأجهزة الذكية وحلول التكنولوجيا المبتكرة منذ 2011.</p>
                     <div class="footer__social">
                         <a href="https://www.instagram.com/asia.store.iq" target="_blank" aria-label="Instagram">📷</a>
                         <a href="https://www.facebook.com/share/1KiaEUe9XV" target="_blank" aria-label="Facebook">📘</a>
                         <a href="https://www.tiktok.com/@asia.store24" target="_blank" aria-label="TikTok">🎵</a>
+                        <a href="https://wa.me/9647746400400" target="_blank" aria-label="WhatsApp">📱</a>
                     </div>
                 </div>
-
                 <div>
-                    <h4 class="footer__title" data-i18n="footer_quick">روابط سريعة</h4>
+                    <h4 class="footer__title">روابط سريعة</h4>
                     <ul class="footer__links">
-                        <li><a href="../index.html" data-i18n="nav_home">الرئيسية</a></li>
-                        <li><a href="products.html" data-i18n="nav_products">المنتجات</a></li>
-                        <li><a href="about.html" data-i18n="nav_about">من نحن</a></li>
-                        <li><a href="contact.html" data-i18n="nav_contact">تواصل معنا</a></li>
+                        <li><a href="../index.html">الرئيسية</a></li>
+                        <li><a href="products.html">المنتجات</a></li>
+                        <li><a href="about.html">من نحن</a></li>
+                        <li><a href="contact.html">تواصل معنا</a></li>
                     </ul>
                 </div>
-
                 <div>
-                    <h4 class="footer__title" data-i18n="footer_support">الدعم</h4>
+                    <h4 class="footer__title">الدعم</h4>
                     <ul class="footer__links">
-                        <li><a href="warranty.html" data-i18n="footer_warranty">سياسة الضمان</a></li>
-                        <li><a href="returns.html" data-i18n="footer_returns">الاسترجاع</a></li>
-                        <li><a href="faq.html" data-i18n="footer_faq">الأسئلة الشائعة</a></li>
-                        <li><a href="privacy.html" data-i18n="footer_privacy">سياسة الخصوصية</a></li>
+                        <li><a href="warranty.html">سياسة الضمان</a></li>
+                        <li><a href="returns.html">الاسترجاع</a></li>
+                        <li><a href="faq.html">الأسئلة الشائعة</a></li>
+                        <li><a href="privacy.html">سياسة الخصوصية</a></li>
                     </ul>
                 </div>
-
                 <div>
-                    <h4 class="footer__title" data-i18n="footer_contact">معلومات التواصل</h4>
+                    <h4 class="footer__title">معلومات التواصل</h4>
                     <ul class="footer__links">
                         <li>📍 بغداد – السبع أبكار</li>
                         <li>📞 07746400400</li>
@@ -142,10 +297,9 @@
                     </ul>
                 </div>
             </div>
-
             <div class="footer__bottom">
-                <p data-i18n="footer_rights">© 2024 آسيا ستور. جميع الحقوق محفوظة.</p>
-                <p data-i18n="footer_tagline">حيث تبدأ التقنية بثقة.</p>
+                <p>© 2025 آسيا ستور. جميع الحقوق محفوظة.</p>
+                <p>حيث تبدأ التقنية بثقة.</p>
             </div>
         </div>
     </footer>
@@ -153,6 +307,7 @@
     <script src="../js/i18n.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/cart.js"></script>
+    <script src="../js/auth.js"></script>
 </body>
 
 </html>

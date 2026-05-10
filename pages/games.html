@@ -2,289 +2,321 @@
 <html lang="ar" dir="rtl">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="description" content="آسيا ستور - منطقة الألعاب. استمتع بالألعاب الكلاسيكية: سوبر ماريو، تتريس، باك مان والمزيد">
-    <title>الألعاب | آسيا ستور - Asia Store</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Outfit:wght@300;400;500;600;700;900&family=Tajawal:wght@300;400;500;700;800;900&family=Bai+Jamjuree:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="../css/variables.css">
-    <link rel="stylesheet" href="../css/base.css">
-    <link rel="stylesheet" href="../css/animations.css">
-    <link rel="stylesheet" href="../css/components.css">
-    <link rel="stylesheet" href="../css/pages.css">
-    <style>
-        .games-hero {
-            position: relative;
-            background: var(--surface-alt);
-            padding: var(--space-4xl) 0;
-            text-align: center;
-        }
-
-        .games-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: var(--space-xl);
-        }
-
-        .game-card {
-            background: var(--color-white);
-            border-radius: var(--radius-xl);
-            overflow: hidden;
-            border: 1px solid var(--color-gray-200);
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .game-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--color-primary);
-        }
-
-        .game-card__image {
-            width: 100%;
-            aspect-ratio: 16/10;
-            object-fit: cover;
-        }
-
-        .game-card__info {
-            padding: var(--space-lg);
-        }
-
-        .game-card__title {
-            font-size: var(--fs-xl);
-            font-weight: var(--fw-bold);
-            margin-bottom: var(--space-xs);
-        }
-
-        .game-card__desc {
-            font-size: var(--fs-sm);
-            color: var(--color-gray-600);
-            margin-bottom: var(--space-md);
-        }
-
-        /* Game Modal */
-        .game-modal {
-            display: none;
-            position: fixed;
-            inset: 0;
-            z-index: 10000;
-            background: rgba(0, 0, 0, 0.9);
-            flex-direction: column;
-            align-items: center;
-            padding: var(--space-md);
-        }
-
-        .game-modal.active {
-            display: flex;
-        }
-
-        .game-modal__header {
-            width: 100%;
-            max-width: 900px;
-            display: flex;
-            justify-content: space-between;
-            color: white;
-            margin-bottom: var(--space-md);
-        }
-
-        .game-modal__frame-wrap {
-            width: 100%;
-            max-width: 900px;
-            flex: 1;
-            background: black;
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-        }
-
-        .game-modal__frame-wrap iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="description" content="آسيا ستور - منطقة الألعاب الكلاسيكية: ماريو، تتريس، باك مان، سنيك والمزيد">
+  <title>الألعاب | آسيا ستور - Asia Store</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Outfit:wght@300;400;500;600;700;900&family=Tajawal:wght@300;400;500;700;800;900&family=Bai+Jamjuree:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages.css">
+  <style>
+    .game-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      background: rgba(0,0,0,0.92);
+      backdrop-filter: blur(12px);
+      flex-direction: column;
+      align-items: center;
+      padding: var(--space-lg);
+    }
+    .game-modal.active { display: flex; }
+    .game-modal__header {
+      width: 100%;
+      max-width: 960px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--space-md);
+    }
+    .game-modal__header h2 {
+      color: var(--color-white);
+      font-size: var(--fs-xl);
+      font-family: 'Outfit', sans-serif;
+    }
+    .game-modal__close {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-md);
+      background: rgba(255,255,255,0.1);
+      color: white;
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border: 1px solid rgba(255,255,255,0.2);
+      transition: var(--transition-fast);
+    }
+    .game-modal__close:hover { background: var(--color-accent); }
+    .game-modal__frame-wrap {
+      width: 100%;
+      max-width: 960px;
+      flex: 1;
+      background: #000;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      border: 2px solid rgba(255,255,255,0.1);
+    }
+    .game-modal__frame-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
 </head>
 
 <body>
-    <!-- Page Transition -->
-    <div class="page-transition">
-        <div class="panel"></div>
-        <div class="panel"></div>
-        <div class="panel"></div>
-        <div class="panel"></div>
-        <div class="panel"></div>
+  <div class="page-transition" id="pageTransition">
+    <div class="panel"></div><div class="panel"></div><div class="panel"></div>
+    <div class="panel"></div><div class="panel"></div>
+  </div>
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- HEADER -->
+  <header class="header" id="header">
+    <div class="header__info">
+      <div class="container container--wide">
+        <span>🚚 <span data-i18n="header_shipping">توصيل مجاني للطلبات أكثر من 100,000 د.ع</span></span>
+        <span dir="ltr">📞 0774 640 0400</span>
+      </div>
     </div>
-
-    <!-- Header -->
-    <header class="header" id="header">
-        <div class="header__top">
-            <div class="container container--wide">
-                <div class="header__top-wrapper">
-                    <div class="header__utilities">
-                        <a href="#" class="header__util-link">
-                            <span class="header__util-icon">👤</span>
-                            <span class="header__util-text" data-i18n="nav_account">الحساب</span>
-                        </a>
-                        <a href="#" class="header__util-link" id="cartTrigger">
-                            <span class="header__util-icon">🛒</span>
-                            <span class="header__util-text" data-i18n="nav_cart">السلة</span>
-                            <span class="cart-count">0</span>
-                        </a>
-                    </div>
-                    <div class="header__search">
-                        <form class="search-bar">
-                            <input type="text" data-i18n-placeholder="search_placeholder" placeholder="ابحث عن المنتجات...">
-                            <button type="submit">🔍</button>
-                        </form>
-                    </div>
-                    <a href="../index.html" class="header__logo">
-                        <img src="../assets/logo.svg" alt="Asia Store Logo">
-                        <span class="header__logo-text">Asia Store</span>
-                    </a>
-                </div>
-            </div>
+    <div class="header__top">
+      <div class="container container--wide">
+        <div class="header__top-wrapper">
+          <a href="../index.html" class="header__logo">
+            <img src="../assets/logo.svg" alt="Asia Store Logo">
+            <span class="header__logo-text">Asia <span>Store</span></span>
+          </a>
+          <div class="header__search">
+            <form class="search-bar" id="searchForm">
+              <input type="text" id="searchInput" data-i18n-placeholder="search_placeholder" placeholder="ابحث عن المنتجات...">
+              <button type="submit">🔍</button>
+            </form>
+          </div>
+          <div class="header__utilities">
+            <a href="#" class="header__util-link" id="accountTrigger">
+              <span class="header__util-icon">👤</span>
+              <span data-i18n="nav_account">الحساب</span>
+            </a>
+            <a href="#" class="header__util-link" id="cartTrigger">
+              <span class="header__util-icon">🛒</span>
+              <span data-i18n="nav_cart">السلة</span>
+              <span class="cart-count">0</span>
+            </a>
+          </div>
         </div>
-        <div class="header__bottom">
-            <div class="container container--wide">
-                <nav class="header__nav" id="mainNav">
-                    <ul class="header__nav-list">
-                        <li><a href="../index.html" class="header__nav-link" data-i18n="nav_home">الرئيسية</a></li>
-                        <li><a href="products.html" class="header__nav-link" data-i18n="nav_products">المنتجات</a></li>
-                        <li><a href="about.html" class="header__nav-link" data-i18n="nav_about">من نحن</a></li>
-                        <li><a href="contact.html" class="header__nav-link" data-i18n="nav_contact">تواصل معنا</a></li>
-                    </ul>
-                    <div class="lang-switcher">
-                        <button class="lang-btn active" data-lang="ar">عربي</button>
-                        <button class="lang-btn" data-lang="en">EN</button>
-                    </div>
-                </nav>
-                <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
-                    <span></span><span></span><span></span>
-                </button>
-            </div>
-        </div>
-    </header>
-
-    <!-- Games Hero -->
-    <section class="games-hero">
-        <div class="container">
-            <div class="support-hero__icon" style="font-size: 3.5rem; margin-bottom: var(--space-md);">🕹️</div>
-            <span class="section-header__label" data-i18n="games_hero_label">منطقة الألعاب</span>
-            <h1 class="section-header__title" style="font-size: var(--fs-hero);" data-i18n="games_hero_title">العب واستمتع</h1>
-            <p class="section-header__subtitle" data-i18n="games_hero_subtitle">خذ استراحة واستمتع بهذه الألعاب الكلاسيكية أثناء تصفح متجرنا.</p>
-        </div>
-    </section>
-
-    <!-- Games Grid -->
-    <section class="section">
-        <div class="container">
-            <div class="games-grid">
-                <div class="game-card reveal" onclick="openGame('mario','Super Mario')">
-                    <img src="../assets/images/mario-thumb.png" alt="Mario" class="game-card__image">
-                    <div class="game-card__info">
-                        <h3 class="game-card__title" data-i18n="games_mario">سوبر ماريو</h3>
-                        <p class="game-card__desc" data-i18n="games_mario_desc">استمتع بالمغامرة الكلاسيكية.</p>
-                        <button class="btn btn--primary btn--sm" data-i18n="games_play">العب الآن</button>
-                    </div>
-                </div>
-                <div class="game-card reveal" onclick="openGame('tetris','Tetris')">
-                    <img src="../assets/images/tetris-thumb.png" alt="Tetris" class="game-card__image">
-                    <div class="game-card__info">
-                        <h3 class="game-card__title" data-i18n="games_tetris">تتريس</h3>
-                        <p class="game-card__desc" data-i18n="games_tetris_desc">رتب المكعبات بمهارة.</p>
-                        <button class="btn btn--primary btn--sm" data-i18n="games_play">العب الآن</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer" id="footer">
-        <div class="container">
-            <div class="footer__grid">
-                <div class="footer__brand">
-                    <img src="../assets/logo.svg" alt="Asia Store">
-                    <p data-i18n="footer_desc">وجهتك المميزة لأحدث الأجهزة الذكية وحلول التكنولوجيا المبتكرة منذ 2011.</p>
-                    <div class="footer__social">
-                        <a href="https://www.instagram.com/asia.store.iq" target="_blank" aria-label="Instagram">📷</a>
-                        <a href="https://www.facebook.com/share/1KiaEUe9XV" target="_blank" aria-label="Facebook">📘</a>
-                        <a href="https://www.tiktok.com/@asia.store24" target="_blank" aria-label="TikTok">🎵</a>
-                    </div>
-                </div>
-
-                <div>
-                    <h4 class="footer__title" data-i18n="footer_quick">روابط سريعة</h4>
-                    <ul class="footer__links">
-                        <li><a href="../index.html" data-i18n="nav_home">الرئيسية</a></li>
-                        <li><a href="products.html" data-i18n="nav_products">المنتجات</a></li>
-                        <li><a href="about.html" data-i18n="nav_about">من نحن</a></li>
-                        <li><a href="contact.html" data-i18n="nav_contact">تواصل معنا</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="footer__title" data-i18n="footer_support">الدعم</h4>
-                    <ul class="footer__links">
-                        <li><a href="warranty.html" data-i18n="footer_warranty">سياسة الضمان</a></li>
-                        <li><a href="returns.html" data-i18n="footer_returns">الاسترجاع</a></li>
-                        <li><a href="faq.html" data-i18n="footer_faq">الأسئلة الشائعة</a></li>
-                        <li><a href="privacy.html" data-i18n="footer_privacy">سياسة الخصوصية</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="footer__title" data-i18n="footer_contact">معلومات التواصل</h4>
-                    <ul class="footer__links">
-                        <li>📍 بغداد – السبع أبكار</li>
-                        <li>📞 07746400400</li>
-                        <li>📞 07747400400</li>
-                        <li>🕒 10:00 ص – 10:00 م</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="footer__bottom">
-                <p data-i18n="footer_rights">© 2024 آسيا ستور. جميع الحقوق محفوظة.</p>
-                <p data-i18n="footer_tagline">حيث تبدأ التقنية بثقة.</p>
-            </div>
-        </div>
-    </footer>
-
-    <div class="game-modal" id="gameModal">
-        <div class="game-modal__header">
-            <h2 id="gameTitle">Game</h2>
-            <button class="btn btn--sm" onclick="closeGame()" style="background: white; color: black;">✕</button>
-        </div>
-        <div class="game-modal__frame-wrap">
-            <iframe id="gameFrame" src=""></iframe>
-        </div>
+      </div>
     </div>
+    <div class="header__bottom">
+      <div class="container container--wide">
+        <nav class="header__nav" id="mainNav">
+          <div class="lang-switcher">
+            <button class="lang-btn active" data-lang="ar">عربي</button>
+            <button class="lang-btn" data-lang="en">EN</button>
+          </div>
+          <ul class="header__nav-list">
+            <li><a href="../index.html" class="header__nav-link" data-i18n="nav_home">الرئيسية</a></li>
+            <li><a href="products.html" class="header__nav-link" data-i18n="nav_products">المنتجات</a></li>
+            <li><a href="about.html" class="header__nav-link" data-i18n="nav_about">من نحن</a></li>
+            <li><a href="contact.html" class="header__nav-link" data-i18n="nav_contact">تواصل معنا</a></li>
+            <li><a href="games.html" class="header__nav-link active" data-i18n="nav_games">الألعاب</a></li>
+          </ul>
+        </nav>
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
 
-    <script src="../js/i18n.js"></script>
-    <script src="../js/main.js"></script>
-    <script src="../js/cart.js"></script>
-    <script>
-        const gamePaths = {
-            mario: '../games/mario-repo/index.html',
-            tetris: '../games/tetris/index.html'
-        };
-        function openGame(id, title) {
-            document.getElementById('gameTitle').textContent = title;
-            document.getElementById('gameFrame').src = gamePaths[id];
-            document.getElementById('gameModal').classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-        function closeGame() {
-            document.getElementById('gameModal').classList.remove('active');
-            document.getElementById('gameFrame').src = '';
-            document.body.style.overflow = '';
-        }
-    </script>
+  <!-- GAMES HERO -->
+  <section style="background:var(--color-white); padding:var(--space-5xl) 0 var(--space-4xl); position:relative; overflow:hidden;">
+    <div class="bg-orb bg-orb--primary" style="width:400px;height:400px;top:-120px;right:-80px;"></div>
+    <div class="bg-orb bg-orb--secondary" style="width:300px;height:300px;bottom:-50px;left:-50px;"></div>
+    <div class="container" style="text-align:center; position:relative; z-index:2;">
+      <span style="font-size:4.5rem; display:block; margin-bottom:var(--space-md); animation:float 4s ease-in-out infinite;">🕹️</span>
+      <span class="section-header__label hero-text-animate" data-i18n="games_hero_label">منطقة الألعاب</span>
+      <h1 class="hero-text-animate" style="font-size:var(--fs-hero); font-weight:var(--fw-black); color:var(--color-gray-900); margin:var(--space-md) 0;">
+        <span data-i18n="games_hero_title">العب واستمتع</span>
+      </h1>
+      <p class="hero-text-animate" style="font-size:var(--fs-lg); color:var(--color-gray-500); max-width:520px; margin:0 auto var(--space-2xl); line-height:var(--lh-relaxed);" data-i18n="games_hero_subtitle">
+        خذ استراحة واستمتع بهذه الألعاب الكلاسيكية أثناء تصفح متجرنا.
+      </p>
+      <div style="display:flex; gap:var(--space-sm); justify-content:center; flex-wrap:wrap;" class="hero-text-animate">
+        <span style="background:rgba(27,198,180,0.1); border:1px solid rgba(27,198,180,0.2); color:var(--color-primary-dark); padding:6px 14px; border-radius:var(--radius-full); font-size:var(--fs-xs); font-weight:var(--fw-bold);">7 ألعاب</span>
+        <span style="background:rgba(27,198,180,0.1); border:1px solid rgba(27,198,180,0.2); color:var(--color-primary-dark); padding:6px 14px; border-radius:var(--radius-full); font-size:var(--fs-xs); font-weight:var(--fw-bold);">مجانية 100%</span>
+        <span style="background:rgba(27,198,180,0.1); border:1px solid rgba(27,198,180,0.2); color:var(--color-primary-dark); padding:6px 14px; border-radius:var(--radius-full); font-size:var(--fs-xs); font-weight:var(--fw-bold);">ألعاب كلاسيكية</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- GAMES GRID -->
+  <section class="section" style="background:var(--color-gray-50); border-top:1px solid var(--color-gray-100);">
+    <div class="container">
+      <div class="games-grid">
+
+        <div class="game-card reveal delay-1" onclick="openGame('mario','🍄 سوبر ماريو')">
+          <div class="game-card__thumb-placeholder">🍄</div>
+          <div class="game-card__body">
+            <h3 class="game-card__title" data-i18n="games_mario">سوبر ماريو</h3>
+            <p class="game-card__desc" data-i18n="games_mario_desc">المغامرة الكلاسيكية الأشهر في العالم</p>
+            <span class="game-card__play">🎮 <span data-i18n="games_play">العب الآن</span></span>
+          </div>
+        </div>
+
+        <div class="game-card reveal delay-2" onclick="openGame('pacman','👾 باك مان')">
+          <div class="game-card__thumb-placeholder" style="background:linear-gradient(135deg,#FFD700,#FFA500);">👾</div>
+          <div class="game-card__body">
+            <h3 class="game-card__title" data-i18n="games_pacman">باك مان</h3>
+            <p class="game-card__desc" data-i18n="games_pacman_desc">كل النقاط وتجنب الأشباح</p>
+            <span class="game-card__play">🎮 <span data-i18n="games_play">العب الآن</span></span>
+          </div>
+        </div>
+
+        <div class="game-card reveal delay-3" onclick="openGame('tetris','🧩 تتريس')">
+          <div class="game-card__thumb-placeholder" style="background:linear-gradient(135deg,#1bc6b4,#0ea5e9);">🧩</div>
+          <div class="game-card__body">
+            <h3 class="game-card__title" data-i18n="games_tetris">تتريس</h3>
+            <p class="game-card__desc" data-i18n="games_tetris_desc">رتب المكعبات بسرعة ومهارة</p>
+            <span class="game-card__play">🎮 <span data-i18n="games_play">العب الآن</span></span>
+          </div>
+        </div>
+
+        <div class="game-card reveal delay-1" onclick="openGame('snake','🐍 لعبة الثعبان')">
+          <div class="game-card__thumb-placeholder" style="background:linear-gradient(135deg,#22c55e,#16a34a);">🐍</div>
+          <div class="game-card__body">
+            <h3 class="game-card__title" data-i18n="games_snake">الثعبان</h3>
+            <p class="game-card__desc" data-i18n="games_snake_desc">اجمع الطعام وانمو بلا حدود</p>
+            <span class="game-card__play">🎮 <span data-i18n="games_play">العب الآن</span></span>
+          </div>
+        </div>
+
+        <div class="game-card reveal delay-2" onclick="openGame('flappy','🐦 فلابي بيرد')">
+          <div class="game-card__thumb-placeholder" style="background:linear-gradient(135deg,#3b82f6,#1d4ed8);">🐦</div>
+          <div class="game-card__body">
+            <h3 class="game-card__title" data-i18n="games_flappy">فلابي بيرد</h3>
+            <p class="game-card__desc" data-i18n="games_flappy_desc">حلّق بين الأنابيب بحذر</p>
+            <span class="game-card__play">🎮 <span data-i18n="games_play">العب الآن</span></span>
+          </div>
+        </div>
+
+        <div class="game-card reveal delay-3" onclick="openGame('breakout','🏓 بريك اوت')">
+          <div class="game-card__thumb-placeholder" style="background:linear-gradient(135deg,#f97316,#dc2626);">🏓</div>
+          <div class="game-card__body">
+            <h3 class="game-card__title" data-i18n="games_breakout">بريك اوت</h3>
+            <p class="game-card__desc" data-i18n="games_breakout_desc">حطم الطوب بالمضرب والكرة</p>
+            <span class="game-card__play">🎮 <span data-i18n="games_play">العب الآن</span></span>
+          </div>
+        </div>
+
+        <div class="game-card reveal delay-1" onclick="openGame('game2048','🔢 2048')">
+          <div class="game-card__thumb-placeholder" style="background:linear-gradient(135deg,#8b5cf6,#6d28d9);">🔢</div>
+          <div class="game-card__body">
+            <h3 class="game-card__title">2048</h3>
+            <p class="game-card__desc" data-i18n="games_2048_desc">اجمع الأرقام حتى تصل إلى 2048</p>
+            <span class="game-card__play">🎮 <span data-i18n="games_play">العب الآن</span></span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <img src="../assets/logo.svg" alt="Asia Store">
+          <p data-i18n="footer_desc">وجهتك المميزة لأحدث الأجهزة الذكية وحلول التكنولوجيا المبتكرة منذ 2011.</p>
+          <div class="footer__social">
+            <a href="https://www.instagram.com/asia.store.iq" target="_blank" rel="noopener">📷</a>
+            <a href="https://www.facebook.com/share/1KiaEUe9XV" target="_blank" rel="noopener">📘</a>
+            <a href="https://www.tiktok.com/@asia.store24" target="_blank" rel="noopener">🎵</a>
+            <a href="https://wa.me/9647746400400" target="_blank" rel="noopener">💬</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__title" data-i18n="footer_quick">روابط سريعة</h4>
+          <ul class="footer__links">
+            <li><a href="../index.html" data-i18n="nav_home">الرئيسية</a></li>
+            <li><a href="products.html" data-i18n="nav_products">المنتجات</a></li>
+            <li><a href="about.html" data-i18n="nav_about">من نحن</a></li>
+            <li><a href="contact.html" data-i18n="nav_contact">تواصل معنا</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer__title" data-i18n="footer_support">الدعم</h4>
+          <ul class="footer__links">
+            <li><a href="warranty.html" data-i18n="footer_warranty">سياسة الضمان</a></li>
+            <li><a href="returns.html" data-i18n="footer_returns">الاسترجاع</a></li>
+            <li><a href="faq.html" data-i18n="footer_faq">الأسئلة الشائعة</a></li>
+            <li><a href="privacy.html" data-i18n="footer_privacy">سياسة الخصوصية</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer__title" data-i18n="footer_contact">معلومات التواصل</h4>
+          <ul class="footer__links">
+            <li>📍 بغداد – السبع أبكار</li>
+            <li><a href="tel:07746400400" dir="ltr">📞 07746400400</a></li>
+            <li><a href="tel:07747400400" dir="ltr">📞 07747400400</a></li>
+            <li>🕒 10:00 ص – 10:00 م</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p data-i18n="footer_rights">© 2025 آسيا ستور. جميع الحقوق محفوظة.</p>
+        <p data-i18n="footer_tagline">حيث تبدأ التقنية بثقة.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Game Modal -->
+  <div class="game-modal" id="gameModal">
+    <div class="game-modal__header">
+      <h2 id="gameTitle">Game</h2>
+      <button class="game-modal__close" onclick="closeGame()">✕</button>
+    </div>
+    <div class="game-modal__frame-wrap">
+      <iframe id="gameFrame" src="" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <script src="../js/i18n.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/cart.js"></script>
+  <script>
+    const gamePaths = {
+      mario:    '../games/mario-repo/index.html',
+      pacman:   '../games/pacman/index.html',
+      tetris:   '../games/tetris/index.html',
+      snake:    '../games/snake/index.html',
+      flappy:   '../games/flappy/index.html',
+      breakout: '../games/breakout/index.html',
+      game2048: '../games/game2048/index.html'
+    };
+    function openGame(id, title) {
+      document.getElementById('gameTitle').textContent = title;
+      document.getElementById('gameFrame').src = gamePaths[id] || '';
+      document.getElementById('gameModal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeGame() {
+      document.getElementById('gameModal').classList.remove('active');
+      document.getElementById('gameFrame').src = '';
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeGame();
+    });
+  </script>
 </body>
-
 </html>

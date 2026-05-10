@@ -4,23 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="آسيا ستور - سياسة الضمان. ضمان حقيقي يشمل العيوب المصنعية والأداء">
+    <meta name="description" content="آسيا ستور - سياسة الضمان. ضمان حقيقي يشمل العيوب المصنعية والأداء لمدة تصل إلى سنتين">
     <title>سياسة الضمان | آسيا ستور - Asia Store</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Outfit:wght@300;400;500;600;700;900&family=Tajawal:wght@300;400;500;700;800;900&family=Bai+Jamjuree:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Outfit:wght@300;400;500;600;700;900&family=Tajawal:wght@300;400;500;700;800;900&family=Bai+Jamjuree:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/variables.css">
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/animations.css">
     <link rel="stylesheet" href="../css/components.css">
     <link rel="stylesheet" href="../css/pages.css">
+    <link rel="stylesheet" href="../css/support-pages.css">
 </head>
 
 <body>
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+
     <!-- Page Transition -->
-    <div class="page-transition">
+    <div class="page-transition" id="pageTransition">
         <div class="panel"></div>
         <div class="panel"></div>
         <div class="panel"></div>
@@ -28,30 +31,40 @@
         <div class="panel"></div>
     </div>
 
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
     <!-- Header -->
     <header class="header" id="header">
+        <div class="header__info">
+            <div class="container container--wide">
+                <span>📞 اتصل بنا: 07746400400</span>
+                <span>🚚 توصيل داخل بغداد</span>
+                <span>✅ ضمان أصلي على جميع المنتجات</span>
+            </div>
+        </div>
         <div class="header__top">
             <div class="container container--wide">
                 <div class="header__top-wrapper">
                     <div class="header__utilities">
-                        <a href="#" class="header__util-link">
+                        <a href="#" class="header__util-link" id="authTrigger">
                             <span class="header__util-icon">👤</span>
-                            <span class="header__util-text" data-i18n="nav_account">الحساب</span>
+                            <span class="header__util-text">الحساب</span>
                         </a>
                         <a href="#" class="header__util-link" id="cartTrigger">
                             <span class="header__util-icon">🛒</span>
-                            <span class="header__util-text" data-i18n="nav_cart">السلة</span>
+                            <span class="header__util-text">السلة</span>
                             <span class="cart-count">0</span>
                         </a>
                     </div>
                     <div class="header__search">
-                        <form class="search-bar">
-                            <input type="text" data-i18n-placeholder="search_placeholder" placeholder="ابحث عن المنتجات...">
+                        <form class="search-bar" id="searchForm">
+                            <input type="text" id="searchInput" placeholder="ابحث عن المنتجات...">
                             <button type="submit">🔍</button>
                         </form>
                     </div>
                     <a href="../index.html" class="header__logo">
-                        <img src="../assets/logo.svg" alt="Asia Store Logo">
+                        <div class="header__logo-icon">A</div>
                         <span class="header__logo-text">Asia Store</span>
                     </a>
                 </div>
@@ -61,10 +74,11 @@
             <div class="container container--wide">
                 <nav class="header__nav" id="mainNav">
                     <ul class="header__nav-list">
-                        <li><a href="../index.html" class="header__nav-link" data-i18n="nav_home">الرئيسية</a></li>
-                        <li><a href="products.html" class="header__nav-link" data-i18n="nav_products">المنتجات</a></li>
-                        <li><a href="about.html" class="header__nav-link" data-i18n="nav_about">من نحن</a></li>
-                        <li><a href="contact.html" class="header__nav-link" data-i18n="nav_contact">تواصل معنا</a></li>
+                        <li><a href="../index.html" class="header__nav-link">الرئيسية</a></li>
+                        <li><a href="products.html" class="header__nav-link">المنتجات</a></li>
+                        <li><a href="about.html" class="header__nav-link">من نحن</a></li>
+                        <li><a href="contact.html" class="header__nav-link">تواصل معنا</a></li>
+                        <li><a href="games.html" class="header__nav-link">ألعاب</a></li>
                     </ul>
                     <div class="lang-switcher">
                         <button class="lang-btn active" data-lang="ar">عربي</button>
@@ -79,25 +93,224 @@
     </header>
 
     <!-- Support Hero -->
-    <section class="support-hero" style="background: var(--surface-alt); padding: var(--space-4xl) 0;">
-        <div class="container" style="text-align: center;">
-            <div class="support-hero__icon" style="font-size: 3.5rem; margin-bottom: var(--space-md);">🛡️</div>
-            <span class="section-header__label" data-i18n="warranty_hero_label">سياسة الضمان</span>
-            <h1 class="section-header__title" style="font-size: var(--fs-hero);" data-i18n="warranty_hero_title">ضمانك للجودة</h1>
-            <p class="section-header__subtitle" data-i18n="warranty_hero_subtitle">نؤمن بجودة كل منتج نبيعه. سياسة الضمان لدينا تضمن راحة بالك الكاملة.</p>
+    <section class="support-hero">
+        <div class="container" style="text-align: center; position: relative; z-index: 1;">
+            <div class="support-hero__icon">🛡️</div>
+            <span class="section-header__label">سياسة الضمان</span>
+            <h1 class="section-header__title" style="font-size: var(--fs-hero);">ضمانك للجودة</h1>
+            <p class="section-header__subtitle">نؤمن بجودة كل منتج نبيعه. سياسة الضمان لدينا تضمن راحة بالك الكاملة.</p>
+            <p class="support-updated">سارٍ منذ 2011 | آخر تحديث: مايو 2025</p>
         </div>
     </section>
 
-    <!-- Steps -->
+    <!-- Warranty Overview Cards -->
+    <section class="section" style="padding: var(--space-2xl) 0; background: var(--color-white); border-bottom: 1px solid var(--color-gray-100);">
+        <div class="container">
+            <div class="support-cards-grid reveal">
+                <div class="support-info-card">
+                    <span class="support-info-card__icon">📱</span>
+                    <div class="support-info-card__title">الهواتف الذكية</div>
+                    <div class="support-info-card__desc">ضمان كامل لمدة <strong>12 شهراً</strong> من تاريخ الشراء على العيوب المصنعية</div>
+                </div>
+                <div class="support-info-card">
+                    <span class="support-info-card__icon">💻</span>
+                    <div class="support-info-card__title">اللابتوبات والحاسوب</div>
+                    <div class="support-info-card__desc">ضمان موسع لمدة <strong>12-24 شهراً</strong> حسب الماركة وطراز الجهاز</div>
+                </div>
+                <div class="support-info-card">
+                    <span class="support-info-card__icon">🎧</span>
+                    <div class="support-info-card__title">الأكسسوارات والسماعات</div>
+                    <div class="support-info-card__desc">ضمان لمدة <strong>6 أشهر</strong> على جميع الأكسسوارات والسماعات</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Use Warranty - Steps -->
     <section class="section">
         <div class="container">
-            <div class="steps-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-xl);">
-                <div class="step-card reveal" style="text-align: center; background: var(--color-white); padding: var(--space-xl); border-radius: var(--radius-lg); border: 1px solid var(--color-gray-200);">
-                    <div style="width: 50px; height: 50px; background: var(--color-primary); color: white; display: flex; align-items: center; justify-content: center; border-radius: 50%; margin: 0 auto var(--space-md) auto; font-weight: bold;">1</div>
-                    <h3 style="margin-bottom: var(--space-sm);" data-i18n="warranty_step1_title">تواصل معنا</h3>
-                    <p style="font-size: var(--fs-sm); color: var(--color-gray-600);" data-i18n="warranty_step1_desc">تواصل عبر الهاتف أو الواتساب أو قم بزيارة متجرنا.</p>
+            <div class="section-header reveal" style="text-align: center; margin-bottom: var(--space-3xl);">
+                <span class="section-header__label">الإجراءات</span>
+                <h2 class="section-header__title">كيف تستخدم الضمان؟</h2>
+                <p class="section-header__subtitle">4 خطوات بسيطة للاستفادة من خدمة الضمان</p>
+            </div>
+            <div class="steps-grid reveal">
+                <div class="step-card">
+                    <div class="step-card__number">1</div>
+                    <h3 class="step-card__title">تواصل معنا</h3>
+                    <p class="step-card__desc">اتصل بنا أو أرسل رسالة واتساب على 07746400400 وأخبرنا عن المشكلة</p>
                 </div>
-                <!-- Add other steps similarly if needed, or keep it simple -->
+                <div class="step-card">
+                    <div class="step-card__number">2</div>
+                    <h3 class="step-card__title">أحضر الجهاز</h3>
+                    <p class="step-card__desc">قم بإحضار الجهاز إلى متجرنا مع فاتورة الشراء الأصلية</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-card__number">3</div>
+                    <h3 class="step-card__title">الفحص والتشخيص</h3>
+                    <p class="step-card__desc">يقوم فريق الفنيين المختصين لدينا بفحص الجهاز وتشخيص المشكلة</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-card__number">4</div>
+                    <h3 class="step-card__title">الإصلاح أو الاستبدال</h3>
+                    <p class="step-card__desc">نقوم بإصلاح الجهاز أو استبداله مجاناً ضمن شروط الضمان</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What's Covered / Not Covered -->
+    <section class="section" style="background: var(--color-gray-50);">
+        <div class="container">
+            <div class="support-highlight-grid reveal">
+                <div class="support-highlight-card">
+                    <div class="support-highlight-card__icon">✅</div>
+                    <h3>ما يشمله الضمان</h3>
+                    <ul class="support-list support-list--check" style="margin-top: var(--space-md);">
+                        <li class="support-list__item">
+                            <span class="support-list__icon">✓</span>
+                            <span>العيوب المصنعية في قطع الجهاز</span>
+                        </li>
+                        <li class="support-list__item">
+                            <span class="support-list__icon">✓</span>
+                            <span>أعطال الشاشة غير الناتجة عن صدمة خارجية</span>
+                        </li>
+                        <li class="support-list__item">
+                            <span class="support-list__icon">✓</span>
+                            <span>مشاكل البطارية ضمن معدل التدهور الطبيعي</span>
+                        </li>
+                        <li class="support-list__item">
+                            <span class="support-list__icon">✓</span>
+                            <span>أعطال المكونات الداخلية (المعالج، الذاكرة، كاميرا)</span>
+                        </li>
+                        <li class="support-list__item">
+                            <span class="support-list__icon">✓</span>
+                            <span>أعطال منافذ الشحن والأزرار</span>
+                        </li>
+                        <li class="support-list__item">
+                            <span class="support-list__icon">✓</span>
+                            <span>مشاكل الاتصال (واي فاي، بلوتوث، شبكة)</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="support-highlight-card support-highlight-card--alert">
+                    <div class="support-highlight-card__icon">⚠️</div>
+                    <h3>ما لا يشمله الضمان</h3>
+                    <ul class="support-list" style="margin-top: var(--space-md);">
+                        <li class="support-list__item">
+                            <span class="support-list__icon">✗</span>
+                            <span>الكسر الجسدي والشاشة المكسورة نتيجة السقوط</span>
+                        </li>
+                        <li class="support-list__item">
+                            <span class="support-list__icon">✗</span>
+                            <span>تلف نتيجة دخول الماء أو السوائل</span>
+                        </li>
+                        <li class="support-list__item">
+                            <span class="support-list__icon">✗</span>
+                            <span>الأضرار الناتجة عن سوء الاستخدام</span>
+                        </li>
+                        <li class="support-list__item">
+                            <span class="support-list__icon">✗</span>
+                            <span>تعديل الجهاز أو فتحه من قِبل جهات غير معتمدة</span>
+                        </li>
+                        <li class="support-list__item">
+                            <span class="support-list__icon">✗</span>
+                            <span>الحوادث الناتجة عن تقلبات التيار الكهربائي</span>
+                        </li>
+                        <li class="support-list__item">
+                            <span class="support-list__icon">✗</span>
+                            <span>فقدان البيانات (يُنصح بالنسخ الاحتياطي دائماً)</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Warranty Table -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header reveal" style="text-align: center; margin-bottom: var(--space-3xl);">
+                <span class="section-header__label">جدول الضمان</span>
+                <h2 class="section-header__title">مدد الضمان حسب الفئة</h2>
+            </div>
+            <div class="support-table-wrap reveal">
+                <table class="support-table">
+                    <thead>
+                        <tr>
+                            <th>فئة المنتج</th>
+                            <th>مدة الضمان</th>
+                            <th>نوع الضمان</th>
+                            <th>التغطية</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>🍎 آيفون (Apple iPhone)</td>
+                            <td>12 شهراً</td>
+                            <td>ضمان أصلي Apple</td>
+                            <td>عيوب مصنعية كاملة</td>
+                        </tr>
+                        <tr>
+                            <td>📱 سامسونج Samsung</td>
+                            <td>12 شهراً</td>
+                            <td>ضمان أصلي Samsung</td>
+                            <td>عيوب مصنعية كاملة</td>
+                        </tr>
+                        <tr>
+                            <td>📱 شاومي Xiaomi</td>
+                            <td>12 شهراً</td>
+                            <td>ضمان أصلي Xiaomi</td>
+                            <td>عيوب مصنعية كاملة</td>
+                        </tr>
+                        <tr>
+                            <td>💻 لابتوب Dell / HP / Lenovo</td>
+                            <td>12-24 شهراً</td>
+                            <td>ضمان أصلي الشركة</td>
+                            <td>عيوب مصنعية + أجزاء</td>
+                        </tr>
+                        <tr>
+                            <td>🎧 سماعات AirPods / Sony</td>
+                            <td>6 أشهر</td>
+                            <td>ضمان آسيا ستور</td>
+                            <td>عيوب مصنعية</td>
+                        </tr>
+                        <tr>
+                            <td>⌚ ساعات ذكية</td>
+                            <td>6 أشهر</td>
+                            <td>ضمان أصلي</td>
+                            <td>عيوب مصنعية كاملة</td>
+                        </tr>
+                        <tr>
+                            <td>🎮 أجهزة ألعاب</td>
+                            <td>12 شهراً</td>
+                            <td>ضمان الشركة المصنعة</td>
+                            <td>عيوب مصنعية كاملة</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="support-note reveal">
+                💡 <strong>ملاحظة:</strong> للاستفادة من الضمان، يجب الاحتفاظ بفاتورة الشراء الأصلية وعدم إزالة أي ملصقات أو أختام رسمية من الجهاز.
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section class="section" style="background: var(--color-gray-50);">
+        <div class="container">
+            <div class="support-cta reveal">
+                <span style="font-size: 3rem; display: block; margin-bottom: var(--space-md);">🛡️</span>
+                <h2 style="font-size: var(--fs-2xl); font-weight: var(--fw-bold); color: var(--color-gray-900); margin-bottom: var(--space-sm);">هل جهازك يحتاج ضمان؟</h2>
+                <p style="color: var(--color-gray-600); margin-bottom: var(--space-xl);">تواصل معنا الآن وسنساعدك في أسرع وقت ممكن</p>
+                <div style="display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap;">
+                    <a href="https://wa.me/9647746400400" target="_blank" class="btn btn--primary magnetic" style="display: inline-flex; align-items: center; gap: 8px;">
+                        <span>📱</span><span>واتساب: 07746400400</span>
+                    </a>
+                    <a href="contact.html" class="btn btn--outline magnetic" style="display: inline-flex; align-items: center; gap: 8px;">
+                        <span>📍</span><span>زيارة المتجر</span>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -107,37 +320,38 @@
         <div class="container">
             <div class="footer__grid">
                 <div class="footer__brand">
-                    <img src="../assets/logo.svg" alt="Asia Store">
-                    <p data-i18n="footer_desc">وجهتك المميزة لأحدث الأجهزة الذكية وحلول التكنولوجيا المبتكرة منذ 2011.</p>
+                    <div class="footer__logo">
+                        <div class="header__logo-icon">A</div>
+                        <span>Asia Store</span>
+                    </div>
+                    <p>وجهتك المميزة لأحدث الأجهزة الذكية وحلول التكنولوجيا المبتكرة منذ 2011.</p>
                     <div class="footer__social">
                         <a href="https://www.instagram.com/asia.store.iq" target="_blank" aria-label="Instagram">📷</a>
                         <a href="https://www.facebook.com/share/1KiaEUe9XV" target="_blank" aria-label="Facebook">📘</a>
                         <a href="https://www.tiktok.com/@asia.store24" target="_blank" aria-label="TikTok">🎵</a>
+                        <a href="https://wa.me/9647746400400" target="_blank" aria-label="WhatsApp">📱</a>
                     </div>
                 </div>
-
                 <div>
-                    <h4 class="footer__title" data-i18n="footer_quick">روابط سريعة</h4>
+                    <h4 class="footer__title">روابط سريعة</h4>
                     <ul class="footer__links">
-                        <li><a href="../index.html" data-i18n="nav_home">الرئيسية</a></li>
-                        <li><a href="products.html" data-i18n="nav_products">المنتجات</a></li>
-                        <li><a href="about.html" data-i18n="nav_about">من نحن</a></li>
-                        <li><a href="contact.html" data-i18n="nav_contact">تواصل معنا</a></li>
+                        <li><a href="../index.html">الرئيسية</a></li>
+                        <li><a href="products.html">المنتجات</a></li>
+                        <li><a href="about.html">من نحن</a></li>
+                        <li><a href="contact.html">تواصل معنا</a></li>
                     </ul>
                 </div>
-
                 <div>
-                    <h4 class="footer__title" data-i18n="footer_support">الدعم</h4>
+                    <h4 class="footer__title">الدعم</h4>
                     <ul class="footer__links">
-                        <li><a href="warranty.html" data-i18n="footer_warranty">سياسة الضمان</a></li>
-                        <li><a href="returns.html" data-i18n="footer_returns">الاسترجاع</a></li>
-                        <li><a href="faq.html" data-i18n="footer_faq">الأسئلة الشائعة</a></li>
-                        <li><a href="privacy.html" data-i18n="footer_privacy">سياسة الخصوصية</a></li>
+                        <li><a href="warranty.html">سياسة الضمان</a></li>
+                        <li><a href="returns.html">الاسترجاع</a></li>
+                        <li><a href="faq.html">الأسئلة الشائعة</a></li>
+                        <li><a href="privacy.html">سياسة الخصوصية</a></li>
                     </ul>
                 </div>
-
                 <div>
-                    <h4 class="footer__title" data-i18n="footer_contact">معلومات التواصل</h4>
+                    <h4 class="footer__title">معلومات التواصل</h4>
                     <ul class="footer__links">
                         <li>📍 بغداد – السبع أبكار</li>
                         <li>📞 07746400400</li>
@@ -146,10 +360,9 @@
                     </ul>
                 </div>
             </div>
-
             <div class="footer__bottom">
-                <p data-i18n="footer_rights">© 2024 آسيا ستور. جميع الحقوق محفوظة.</p>
-                <p data-i18n="footer_tagline">حيث تبدأ التقنية بثقة.</p>
+                <p>© 2025 آسيا ستور. جميع الحقوق محفوظة.</p>
+                <p>حيث تبدأ التقنية بثقة.</p>
             </div>
         </div>
     </footer>
@@ -157,6 +370,7 @@
     <script src="../js/i18n.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/cart.js"></script>
+    <script src="../js/auth.js"></script>
 </body>
 
 </html>

@@ -2,352 +2,405 @@
 <html lang="ar" dir="rtl">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="آسيا ستور - تسوّق أحدث الأجهزة الذكية والمنتجات التقنية بأفضل الأسعار">
-    <title>المنتجات | آسيا ستور - Asia Store</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Outfit:wght@300;400;500;600;700;900&family=Tajawal:wght@300;400;500;700;800;900&family=Bai+Jamjuree:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="../css/variables.css">
-    <link rel="stylesheet" href="../css/base.css">
-    <link rel="stylesheet" href="../css/animations.css">
-    <link rel="stylesheet" href="../css/components.css">
-    <link rel="stylesheet" href="../css/pages.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="آسيا ستور - تسوّق أحدث الأجهزة الذكية والمنتجات التقنية بأفضل الأسعار">
+  <title>المنتجات | آسيا ستور - Asia Store</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Outfit:wght@300;400;500;600;700;900&family=Tajawal:wght@300;400;500;700;800;900&family=Bai+Jamjuree:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages.css">
 </head>
 
 <body>
-    <!-- Page Transition -->
-    <div class="page-transition">
-        <div class="panel"></div>
-        <div class="panel"></div>
-        <div class="panel"></div>
-        <div class="panel"></div>
-        <div class="panel"></div>
+  <div class="page-transition" id="pageTransition">
+    <div class="panel"></div><div class="panel"></div><div class="panel"></div>
+    <div class="panel"></div><div class="panel"></div>
+  </div>
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- HEADER -->
+  <header class="header" id="header">
+    <div class="header__info">
+      <div class="container container--wide">
+        <span>🚚 <span data-i18n="header_shipping">توصيل مجاني للطلبات أكثر من 100,000 د.ع</span></span>
+        <span dir="ltr">📞 0774 640 0400</span>
+      </div>
     </div>
-
-    <!-- Header -->
-    <header class="header" id="header">
-        <div class="header__top">
-            <div class="container container--wide">
-                <div class="header__top-wrapper">
-                    <div class="header__utilities">
-                        <a href="#" class="header__util-link" id="accountTrigger">
-                            <span class="header__util-icon">👤</span>
-                            <span class="header__util-text" data-i18n="nav_account">الحساب</span>
-                        </a>
-                        <a href="#" class="header__util-link" id="cartTrigger">
-                            <span class="header__util-icon">🛒</span>
-                            <span class="header__util-text" data-i18n="nav_cart">السلة</span>
-                            <span class="cart-count">0</span>
-                        </a>
-                    </div>
-                    <div class="header__search">
-                        <form class="search-bar">
-                            <input type="text" data-i18n-placeholder="search_placeholder" placeholder="ابحث عن المنتجات...">
-                            <button type="submit">🔍</button>
-                        </form>
-                    </div>
-                    <a href="../index.html" class="header__logo">
-                        <img src="../assets/logo.svg" alt="Asia Store Logo">
-                        <span class="header__logo-text">Asia Store</span>
-                    </a>
-                </div>
-            </div>
+    <div class="header__top">
+      <div class="container container--wide">
+        <div class="header__top-wrapper">
+          <a href="../index.html" class="header__logo">
+            <img src="../assets/logo.svg" alt="Asia Store Logo">
+            <span class="header__logo-text">Asia <span>Store</span></span>
+          </a>
+          <div class="header__search">
+            <form class="search-bar" id="searchForm">
+              <input type="text" id="searchInput" data-i18n-placeholder="search_placeholder" placeholder="ابحث عن المنتجات...">
+              <button type="submit">🔍</button>
+            </form>
+          </div>
+          <div class="header__utilities">
+            <a href="#" class="header__util-link" id="accountTrigger">
+              <span class="header__util-icon">👤</span>
+              <span data-i18n="nav_account">الحساب</span>
+            </a>
+            <a href="#" class="header__util-link" id="cartTrigger">
+              <span class="header__util-icon">🛒</span>
+              <span data-i18n="nav_cart">السلة</span>
+              <span class="cart-count">0</span>
+            </a>
+          </div>
         </div>
-        <div class="header__bottom">
-            <div class="container container--wide">
-                <nav class="header__nav" id="mainNav">
-                    <ul class="header__nav-list">
-                        <li><a href="../index.html" class="header__nav-link" data-i18n="nav_home">الرئيسية</a></li>
-                        <li><a href="products.html" class="header__nav-link active" data-i18n="nav_products">المنتجات</a></li>
-                        <li><a href="about.html" class="header__nav-link" data-i18n="nav_about">من نحن</a></li>
-                        <li><a href="contact.html" class="header__nav-link" data-i18n="nav_contact">تواصل معنا</a></li>
-                    </ul>
-                    <div class="lang-switcher">
-                        <button class="lang-btn active" data-lang="ar">عربي</button>
-                        <button class="lang-btn" data-lang="en">EN</button>
-                    </div>
-                </nav>
-                <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
-                    <span></span><span></span><span></span>
-                </button>
-            </div>
+      </div>
+    </div>
+    <div class="header__bottom">
+      <div class="container container--wide">
+        <nav class="header__nav" id="mainNav">
+          <div class="lang-switcher">
+            <button class="lang-btn active" data-lang="ar">عربي</button>
+            <button class="lang-btn" data-lang="en">EN</button>
+          </div>
+          <ul class="header__nav-list">
+            <li><a href="../index.html" class="header__nav-link" data-i18n="nav_home">الرئيسية</a></li>
+            <li><a href="products.html" class="header__nav-link active" data-i18n="nav_products">المنتجات</a></li>
+            <li><a href="about.html" class="header__nav-link" data-i18n="nav_about">من نحن</a></li>
+            <li><a href="contact.html" class="header__nav-link" data-i18n="nav_contact">تواصل معنا</a></li>
+            <li><a href="games.html" class="header__nav-link" data-i18n="nav_games">الألعاب</a></li>
+          </ul>
+        </nav>
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- PRODUCTS HERO -->
+  <section class="products-hero">
+    <div class="bg-orb bg-orb--primary" style="width:350px;height:350px;top:-100px;right:-60px;"></div>
+    <div class="container">
+      <div class="section-header">
+        <span class="section-header__label hero-text-animate" data-i18n="products_label">منتجاتنا</span>
+        <h1 class="hero-text-animate" style="font-size:var(--fs-hero); font-weight:var(--fw-black); color:var(--color-gray-900); margin-bottom:var(--space-md);" data-i18n="products_title">تسوّق الأفضل</h1>
+        <p class="section-header__subtitle hero-text-animate" data-i18n="products_subtitle">تشكيلة مختارة من أفضل المنتجات التقنية وأعلاها جودة</p>
+      </div>
+
+      <!-- Search bar inline -->
+      <div style="max-width:540px; margin:0 auto var(--space-2xl);" class="hero-text-animate">
+        <form class="search-bar" id="productSearchForm" style="background:var(--color-gray-50); border-color:var(--color-gray-200);">
+          <input type="text" id="productSearchInput" placeholder="ابحث في المنتجات..." style="color:var(--color-gray-800);" onkeyup="filterProductsLive(this.value)">
+          <button type="submit" style="background:var(--color-primary); color:white;">🔍</button>
+        </form>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="filter-tabs">
+        <button class="filter-tab active" data-filter="all" onclick="filterProducts('all')" data-i18n="filter_all">الكل</button>
+        <button class="filter-tab" data-filter="smartphones" onclick="filterProducts('smartphones')" data-i18n="cat_smartphones">الهواتف الذكية</button>
+        <button class="filter-tab" data-filter="laptops" onclick="filterProducts('laptops')" data-i18n="cat_laptops">الحواسيب المحمولة</button>
+        <button class="filter-tab" data-filter="tablets" onclick="filterProducts('tablets')">الأجهزة اللوحية</button>
+        <button class="filter-tab" data-filter="wearables" onclick="filterProducts('wearables')" data-i18n="cat_wearables">الأجهزة القابلة للارتداء</button>
+        <button class="filter-tab" data-filter="audio" onclick="filterProducts('audio')" data-i18n="cat_audio">الصوتيات</button>
+        <button class="filter-tab" data-filter="electronics" onclick="filterProducts('electronics')" data-i18n="cat_electronics">الإلكترونيات</button>
+        <button class="filter-tab" data-filter="smarthome" onclick="filterProducts('smarthome')" data-i18n="cat_smarthome">المنزل الذكي</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS GRID -->
+  <section class="section" style="padding-top:var(--space-xl); background:var(--color-white);">
+    <div class="container">
+      <!-- Result count -->
+      <div id="resultCount" style="font-size:var(--fs-sm); color:var(--color-gray-500); margin-bottom:var(--space-xl); text-align:center;"></div>
+
+      <div class="products-grid" id="productsGrid">
+        <!-- Product 1 -->
+        <div class="product-card tilt-3d reveal delay-1" data-category="smartphones" data-name="iphone 16 pro max">
+          <div class="card-shine"></div>
+          <span class="product-card__badge product-card__badge--new" data-i18n="product_new">جديد</span>
+          <div class="product-card__image">
+            <img src="../assets/images/iphone.png" alt="iPhone 16 Pro Max">
+            <div class="product-card__overlay"><span class="product-card__overlay-btn">👁 عرض سريع</span></div>
+          </div>
+          <p class="product-card__category" data-i18n="p1_category">الهواتف الذكية</p>
+          <h3 class="product-card__title" data-i18n="p1_title">iPhone 16 Pro Max</h3>
+          <div class="product-card__actions">
+            <div><div class="product-card__price" data-i18n="p1_price">1,399,000 د.ع</div></div>
+            <button class="btn btn--sm btn--primary" data-i18n="add_to_cart">أضف للسلة</button>
+          </div>
         </div>
-    </header>
 
-    <!-- Products Hero -->
-    <section class="products-hero" style="background: var(--surface-alt); padding: var(--space-4xl) 0;">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-header__label" data-i18n="products_label">منتجات مميزة</span>
-                <h1 class="section-header__title" data-i18n="products_title">الأكثر مبيعاً</h1>
-                <p class="section-header__subtitle" data-i18n="products_subtitle">تشكيلة مختارة من أفضل المنتجات التقنية وأعلاها جودة</p>
-            </div>
-
-            <!-- Filter Tabs -->
-            <div class="filter-tabs">
-                <button class="filter-tab active" data-filter="all" onclick="filterProducts('all')">الكل</button>
-                <button class="filter-tab" data-filter="smartphones" onclick="filterProducts('smartphones')" data-i18n="cat_smartphones">الهواتف الذكية</button>
-                <button class="filter-tab" data-filter="laptops" onclick="filterProducts('laptops')" data-i18n="cat_laptops">الحواسيب المحمولة</button>
-                <button class="filter-tab" data-filter="wearables" onclick="filterProducts('wearables')" data-i18n="cat_wearables">الأجهزة القابلة للارتداء</button>
-                <button class="filter-tab" data-filter="audio" onclick="filterProducts('audio')" data-i18n="cat_audio">الصوتيات</button>
-                <button class="filter-tab" data-filter="electronics" onclick="filterProducts('electronics')" data-i18n="cat_electronics">الالكترونيات</button>
-                <button class="filter-tab" data-filter="smarthome" onclick="filterProducts('smarthome')" data-i18n="cat_smarthome">المنزل الذكي</button>
-                <button class="filter-tab" data-filter="tablets" onclick="filterProducts('tablets')">الأجهزة اللوحية</button>
-            </div>
+        <!-- Product 2 -->
+        <div class="product-card tilt-3d reveal delay-2" data-category="smartphones" data-name="samsung galaxy s24 ultra">
+          <div class="card-shine"></div>
+          <span class="product-card__badge product-card__badge--hot" data-i18n="product_hot">رائج</span>
+          <div class="product-card__image">
+            <img src="../assets/images/samsung.png" alt="Samsung Galaxy S24 Ultra">
+            <div class="product-card__overlay"><span class="product-card__overlay-btn">👁 عرض سريع</span></div>
+          </div>
+          <p class="product-card__category" data-i18n="p2_category">الهواتف الذكية</p>
+          <h3 class="product-card__title" data-i18n="p2_title">Samsung Galaxy S24 Ultra</h3>
+          <div class="product-card__actions">
+            <div><div class="product-card__price" data-i18n="p2_price">1,499,000 د.ع</div></div>
+            <button class="btn btn--sm btn--primary" data-i18n="add_to_cart">أضف للسلة</button>
+          </div>
         </div>
-    </section>
 
-    <!-- Products Grid -->
-    <section class="section" style="padding-top:0;">
-        <div class="container">
-            <div class="products-grid">
-                <!-- Product 1 -->
-                <div class="product-card reveal delay-1" data-category="smartphones">
-                    <span class="product-card__badge" data-i18n="product_new">جديد</span>
-                    <div class="product-card__image">
-                        <img src="../assets/images/iphone.png" alt="iPhone 16 Pro Max">
-                    </div>
-                    <div class="product-card__info">
-                        <p class="product-card__category" data-i18n="p1_category">الهواتف الذكية</p>
-                        <h3 class="product-card__title" data-i18n="p1_title">iPhone 16 Pro Max</h3>
-                        <div class="product-card__actions">
-                            <span class="product-card__price" data-i18n="p1_price">1,399,000 د.ع</span>
-                            <button class="btn btn--sm btn--primary" data-i18n="add_to_cart">أضف للسلة</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 2 -->
-                <div class="product-card reveal delay-2" data-category="smartphones">
-                    <span class="product-card__badge" data-i18n="product_hot">رائج</span>
-                    <div class="product-card__image">
-                        <img src="../assets/images/samsung.png" alt="Samsung Galaxy S24 Ultra">
-                    </div>
-                    <div class="product-card__info">
-                        <p class="product-card__category" data-i18n="p2_category">الهواتف الذكية</p>
-                        <h3 class="product-card__title" data-i18n="p2_title">Samsung Galaxy S24 Ultra</h3>
-                        <div class="product-card__actions">
-                            <span class="product-card__price" data-i18n="p2_price">1,499,000 د.ع</span>
-                            <button class="btn btn--sm btn--primary" data-i18n="add_to_cart">أضف للسلة</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 3 -->
-                <div class="product-card reveal delay-3" data-category="audio">
-                    <div class="product-card__image">
-                        <img src="../assets/images/airpods.png" alt="AirPods Pro 2">
-                    </div>
-                    <div class="product-card__info">
-                        <p class="product-card__category" data-i18n="p3_category">الصوتيات</p>
-                        <h3 class="product-card__title" data-i18n="p3_title">AirPods Pro 2</h3>
-                        <div class="product-card__actions">
-                            <span class="product-card__price" data-i18n="p3_price">299,000 د.ع</span>
-                            <button class="btn btn--sm btn--primary" data-i18n="add_to_cart">أضف للسلة</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 4 -->
-                <div class="product-card reveal delay-1" data-category="wearables">
-                    <span class="product-card__badge" data-i18n="product_new">جديد</span>
-                    <div class="product-card__image">
-                        <img src="../assets/images/smartwatch.png" alt="Apple Watch Ultra 2">
-                    </div>
-                    <div class="product-card__info">
-                        <p class="product-card__category" data-i18n="p4_category">الأجهزة القابلة للارتداء</p>
-                        <h3 class="product-card__title" data-i18n="p4_title">Apple Watch Ultra 2</h3>
-                        <div class="product-card__actions">
-                            <span class="product-card__price" data-i18n="p4_price">949,000 د.ع</span>
-                            <button class="btn btn--sm btn--primary" data-i18n="add_to_cart">أضف للسلة</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 5 -->
-                <div class="product-card reveal delay-2" data-category="laptops">
-                    <div class="product-card__image">
-                        <img src="../assets/images/macbook.png" alt="MacBook Pro M3">
-                    </div>
-                    <div class="product-card__info">
-                        <p class="product-card__category" data-i18n="p5_category">الحواسيب المحمولة</p>
-                        <h3 class="product-card__title" data-i18n="p5_title">MacBook Pro M3</h3>
-                        <div class="product-card__actions">
-                            <span class="product-card__price" data-i18n="p5_price">2,399,000 د.ع</span>
-                            <button class="btn btn--sm btn--primary" data-i18n="add_to_cart">أضف للسلة</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 6 -->
-                <div class="product-card reveal delay-3" data-category="tablets">
-                    <span class="product-card__badge" data-i18n="product_sale">تخفيض</span>
-                    <div class="product-card__image">
-                        <img src="../assets/images/ipad.png" alt="iPad Pro M4">
-                    </div>
-                    <div class="product-card__info">
-                        <p class="product-card__category" data-i18n="p6_category">الأجهزة اللوحية</p>
-                        <h3 class="product-card__title" data-i18n="p6_title">iPad Pro M4</h3>
-                        <div class="product-card__actions">
-                            <span class="product-card__price" data-i18n="p6_price">1,299,000 د.ع</span>
-                            <button class="btn btn--sm btn--primary" data-i18n="add_to_cart">أضف للسلة</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 7 -->
-                <div class="product-card reveal delay-1" data-category="smarthome">
-                    <div class="product-card__image">
-                        <img src="../assets/images/IMG_1547.PNG" alt="Smart Robot Vacuum">
-                    </div>
-                    <div class="product-card__info">
-                        <p class="product-card__category" data-i18n="p7_category">المنزل الذكي</p>
-                        <h3 class="product-card__title" data-i18n="p7_title">مكنسة روبوت ذكية</h3>
-                        <div class="product-card__actions">
-                            <span class="product-card__price" data-i18n="p7_price">450,000 د.ع</span>
-                            <button class="btn btn--sm btn--primary" data-i18n="add_to_cart">أضف للسلة</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 8 -->
-                <div class="product-card reveal delay-2" data-category="smarthome">
-                    <div class="product-card__image">
-                        <img src="../assets/images/IMG_1549.JPG.jpeg" alt="Smart Air Purifier">
-                    </div>
-                    <div class="product-card__info">
-                        <p class="product-card__category" data-i18n="p8_category">المنزل الذكي</p>
-                        <h3 class="product-card__title" data-i18n="p8_title">منقي هواء ذكي</h3>
-                        <div class="product-card__actions">
-                            <span class="product-card__price" data-i18n="p8_price">250,000 د.ع</span>
-                            <button class="btn btn--sm btn--primary" data-i18n="add_to_cart">أضف للسلة</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 9 -->
-                <div class="product-card reveal delay-3" data-category="electronics">
-                    <div class="product-card__image">
-                        <img src="../assets/images/IMG_2055.JPG.jpeg" alt="Smart Coffee Maker">
-                    </div>
-                    <div class="product-card__info">
-                        <p class="product-card__category" data-i18n="p9_category">الإلكترونيات</p>
-                        <h3 class="product-card__title" data-i18n="p9_title">صانعة قهوة ذكية</h3>
-                        <div class="product-card__actions">
-                            <span class="product-card__price" data-i18n="p9_price">350,000 د.ع</span>
-                            <button class="btn btn--sm btn--primary" data-i18n="add_to_cart">أضف للسلة</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 10 -->
-                <div class="product-card reveal delay-1" data-category="electronics">
-                    <div class="product-card__image">
-                        <img src="../assets/images/IMG_2056.JPG.jpeg" alt="Smart Lighting System">
-                    </div>
-                    <div class="product-card__info">
-                        <p class="product-card__category" data-i18n="p10_category">الإلكترونيات</p>
-                        <h3 class="product-card__title" data-i18n="p10_title">نظام إضاءة ذكي</h3>
-                        <div class="product-card__actions">
-                            <span class="product-card__price" data-i18n="p10_price">120,000 د.ع</span>
-                            <button class="btn btn--sm btn--primary" data-i18n="add_to_cart">أضف للسلة</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 11 -->
-                <div class="product-card reveal delay-2" data-category="smarthome">
-                    <div class="product-card__image">
-                        <img src="../assets/images/IMG_2057.JPG.jpeg" alt="Smart Security Camera">
-                    </div>
-                    <div class="product-card__info">
-                        <p class="product-card__category" data-i18n="p11_category">المنزل الذكي</p>
-                        <h3 class="product-card__title" data-i18n="p11_title">كاميرا مراقبة ذكية</h3>
-                        <div class="product-card__actions">
-                            <span class="product-card__price" data-i18n="p11_price">185,000 د.ع</span>
-                            <button class="btn btn--sm btn--primary" data-i18n="add_to_cart">أضف للسلة</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 12 -->
-                <div class="product-card reveal delay-3" data-category="electronics">
-                    <div class="product-card__image">
-                        <img src="../assets/images/IMG_2058.JPG.jpeg" alt="Smart Thermostat">
-                    </div>
-                    <div class="product-card__info">
-                        <p class="product-card__category" data-i18n="p12_category">الإلكترونيات</p>
-                        <h3 class="product-card__title" data-i18n="p12_title">ثرموستات ذكي</h3>
-                        <div class="product-card__actions">
-                            <span class="product-card__price" data-i18n="p12_price">199,000 د.ع</span>
-                            <button class="btn btn--sm btn--primary" data-i18n="add_to_cart">أضف للسلة</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <!-- Product 3 -->
+        <div class="product-card tilt-3d reveal delay-3" data-category="audio" data-name="airpods pro 2">
+          <div class="card-shine"></div>
+          <div class="product-card__image">
+            <img src="../assets/images/airpods.png" alt="AirPods Pro 2">
+            <div class="product-card__overlay"><span class="product-card__overlay-btn">👁 عرض سريع</span></div>
+          </div>
+          <p class="product-card__category" data-i18n="p3_category">الصوتيات</p>
+          <h3 class="product-card__title" data-i18n="p3_title">AirPods Pro 2</h3>
+          <div class="product-card__actions">
+            <div><div class="product-card__price" data-i18n="p3_price">299,000 د.ع</div></div>
+            <button class="btn btn--sm btn--primary" data-i18n="add_to_cart">أضف للسلة</button>
+          </div>
         </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="footer" id="footer">
-        <div class="container">
-            <div class="footer__grid">
-                <div class="footer__brand">
-                    <img src="../assets/logo.svg" alt="Asia Store">
-                    <p data-i18n="footer_desc">وجهتك المميزة لأحدث الأجهزة الذكية وحلول التكنولوجيا المبتكرة منذ 2011.</p>
-                    <div class="footer__social">
-                        <a href="https://www.instagram.com/asia.store.iq" target="_blank" aria-label="Instagram">📷</a>
-                        <a href="https://www.facebook.com/share/1KiaEUe9XV" target="_blank" aria-label="Facebook">📘</a>
-                        <a href="https://www.tiktok.com/@asia.store24" target="_blank" aria-label="TikTok">🎵</a>
-                    </div>
-                </div>
-
-                <div>
-                    <h4 class="footer__title" data-i18n="footer_quick">روابط سريعة</h4>
-                    <ul class="footer__links">
-                        <li><a href="../index.html" data-i18n="nav_home">الرئيسية</a></li>
-                        <li><a href="products.html" data-i18n="nav_products">المنتجات</a></li>
-                        <li><a href="about.html" data-i18n="nav_about">من نحن</a></li>
-                        <li><a href="contact.html" data-i18n="nav_contact">تواصل معنا</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="footer__title" data-i18n="footer_support">الدعم</h4>
-                    <ul class="footer__links">
-                        <li><a href="warranty.html" data-i18n="footer_warranty">سياسة الضمان</a></li>
-                        <li><a href="returns.html" data-i18n="footer_returns">الاسترجاع</a></li>
-                        <li><a href="faq.html" data-i18n="footer_faq">الأسئلة الشائعة</a></li>
-                        <li><a href="privacy.html" data-i18n="footer_privacy">سياسة الخصوصية</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="footer__title" data-i18n="footer_contact">معلومات التواصل</h4>
-                    <ul class="footer__links">
-                        <li>📍 بغداد – السبع أبكار</li>
-                        <li>📞 07746400400</li>
-                        <li>📞 07747400400</li>
-                        <li>🕒 10:00 ص – 10:00 م</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="footer__bottom">
-                <p data-i18n="footer_rights">© 2024 آسيا ستور. جميع الحقوق محفوظة.</p>
-                <p data-i18n="footer_tagline">حيث تبدأ التقنية بثقة.</p>
-            </div>
+        <!-- Product 4 -->
+        <div class="product-card tilt-3d reveal delay-1" data-category="wearables" data-name="apple watch ultra 2">
+          <div class="card-shine"></div>
+          <span class="product-card__badge product-card__badge--new" data-i18n="product_new">جديد</span>
+          <div class="product-card__image">
+            <img src="../assets/images/smartwatch.png" alt="Apple Watch Ultra 2">
+            <div class="product-card__overlay"><span class="product-card__overlay-btn">👁 عرض سريع</span></div>
+          </div>
+          <p class="product-card__category" data-i18n="p4_category">الأجهزة القابلة للارتداء</p>
+          <h3 class="product-card__title" data-i18n="p4_title">Apple Watch Ultra 2</h3>
+          <div class="product-card__actions">
+            <div><div class="product-card__price" data-i18n="p4_price">949,000 د.ع</div></div>
+            <button class="btn btn--sm btn--primary" data-i18n="add_to_cart">أضف للسلة</button>
+          </div>
         </div>
-    </footer>
 
-    <script src="../js/i18n.js"></script>
-    <script src="../js/main.js"></script>
-    <script src="../js/cart.js"></script>
-    <script src="../js/auth.js"></script>
+        <!-- Product 5 -->
+        <div class="product-card tilt-3d reveal delay-2" data-category="laptops" data-name="macbook pro m3">
+          <div class="card-shine"></div>
+          <div class="product-card__image">
+            <img src="../assets/images/macbook.png" alt="MacBook Pro M3">
+            <div class="product-card__overlay"><span class="product-card__overlay-btn">👁 عرض سريع</span></div>
+          </div>
+          <p class="product-card__category" data-i18n="p5_category">الحواسيب المحمولة</p>
+          <h3 class="product-card__title" data-i18n="p5_title">MacBook Pro M3</h3>
+          <div class="product-card__actions">
+            <div><div class="product-card__price" data-i18n="p5_price">2,399,000 د.ع</div></div>
+            <button class="btn btn--sm btn--primary" data-i18n="add_to_cart">أضف للسلة</button>
+          </div>
+        </div>
+
+        <!-- Product 6 -->
+        <div class="product-card tilt-3d reveal delay-3" data-category="tablets" data-name="ipad pro m4">
+          <div class="card-shine"></div>
+          <span class="product-card__badge product-card__badge--sale" data-i18n="product_sale">تخفيض</span>
+          <div class="product-card__image">
+            <img src="../assets/images/ipad.png" alt="iPad Pro M4">
+            <div class="product-card__overlay"><span class="product-card__overlay-btn">👁 عرض سريع</span></div>
+          </div>
+          <p class="product-card__category" data-i18n="p6_category">الأجهزة اللوحية</p>
+          <h3 class="product-card__title" data-i18n="p6_title">iPad Pro M4</h3>
+          <div class="product-card__actions">
+            <div>
+              <div class="product-card__price" data-i18n="p6_price">1,299,000 د.ع</div>
+              <div class="product-card__old-price">1,499,000 د.ع</div>
+            </div>
+            <button class="btn btn--sm btn--primary" data-i18n="add_to_cart">أضف للسلة</button>
+          </div>
+        </div>
+
+        <!-- Product 7 -->
+        <div class="product-card tilt-3d reveal delay-1" data-category="smarthome" data-name="مكنسة روبوت ذكية">
+          <div class="card-shine"></div>
+          <div class="product-card__image">
+            <img src="../assets/images/IMG_1547.PNG" alt="Smart Robot Vacuum">
+            <div class="product-card__overlay"><span class="product-card__overlay-btn">👁 عرض سريع</span></div>
+          </div>
+          <p class="product-card__category" data-i18n="p7_category">المنزل الذكي</p>
+          <h3 class="product-card__title" data-i18n="p7_title">مكنسة روبوت ذكية</h3>
+          <div class="product-card__actions">
+            <div><div class="product-card__price" data-i18n="p7_price">450,000 د.ع</div></div>
+            <button class="btn btn--sm btn--primary" data-i18n="add_to_cart">أضف للسلة</button>
+          </div>
+        </div>
+
+        <!-- Product 8 -->
+        <div class="product-card tilt-3d reveal delay-2" data-category="smarthome" data-name="منقي هواء ذكي">
+          <div class="card-shine"></div>
+          <div class="product-card__image">
+            <img src="../assets/images/IMG_1549.JPG.jpeg" alt="Smart Air Purifier">
+            <div class="product-card__overlay"><span class="product-card__overlay-btn">👁 عرض سريع</span></div>
+          </div>
+          <p class="product-card__category" data-i18n="p8_category">المنزل الذكي</p>
+          <h3 class="product-card__title" data-i18n="p8_title">منقي هواء ذكي</h3>
+          <div class="product-card__actions">
+            <div><div class="product-card__price" data-i18n="p8_price">250,000 د.ع</div></div>
+            <button class="btn btn--sm btn--primary" data-i18n="add_to_cart">أضف للسلة</button>
+          </div>
+        </div>
+
+        <!-- Product 9 -->
+        <div class="product-card tilt-3d reveal delay-3" data-category="electronics" data-name="صانعة قهوة ذكية">
+          <div class="card-shine"></div>
+          <div class="product-card__image">
+            <img src="../assets/images/IMG_2055.JPG.jpeg" alt="Smart Coffee Maker">
+            <div class="product-card__overlay"><span class="product-card__overlay-btn">👁 عرض سريع</span></div>
+          </div>
+          <p class="product-card__category" data-i18n="p9_category">الإلكترونيات</p>
+          <h3 class="product-card__title" data-i18n="p9_title">صانعة قهوة ذكية</h3>
+          <div class="product-card__actions">
+            <div><div class="product-card__price" data-i18n="p9_price">350,000 د.ع</div></div>
+            <button class="btn btn--sm btn--primary" data-i18n="add_to_cart">أضف للسلة</button>
+          </div>
+        </div>
+
+        <!-- Product 10 -->
+        <div class="product-card tilt-3d reveal delay-1" data-category="electronics" data-name="نظام إضاءة ذكي">
+          <div class="card-shine"></div>
+          <div class="product-card__image">
+            <img src="../assets/images/IMG_2056.JPG.jpeg" alt="Smart Lighting System">
+            <div class="product-card__overlay"><span class="product-card__overlay-btn">👁 عرض سريع</span></div>
+          </div>
+          <p class="product-card__category" data-i18n="p10_category">الإلكترونيات</p>
+          <h3 class="product-card__title" data-i18n="p10_title">نظام إضاءة ذكي</h3>
+          <div class="product-card__actions">
+            <div><div class="product-card__price" data-i18n="p10_price">120,000 د.ع</div></div>
+            <button class="btn btn--sm btn--primary" data-i18n="add_to_cart">أضف للسلة</button>
+          </div>
+        </div>
+
+        <!-- Product 11 -->
+        <div class="product-card tilt-3d reveal delay-2" data-category="smarthome" data-name="كاميرا مراقبة ذكية">
+          <div class="card-shine"></div>
+          <div class="product-card__image">
+            <img src="../assets/images/IMG_2057.JPG.jpeg" alt="Smart Security Camera">
+            <div class="product-card__overlay"><span class="product-card__overlay-btn">👁 عرض سريع</span></div>
+          </div>
+          <p class="product-card__category" data-i18n="p11_category">المنزل الذكي</p>
+          <h3 class="product-card__title" data-i18n="p11_title">كاميرا مراقبة ذكية</h3>
+          <div class="product-card__actions">
+            <div><div class="product-card__price" data-i18n="p11_price">185,000 د.ع</div></div>
+            <button class="btn btn--sm btn--primary" data-i18n="add_to_cart">أضف للسلة</button>
+          </div>
+        </div>
+
+        <!-- Product 12 -->
+        <div class="product-card tilt-3d reveal delay-3" data-category="electronics" data-name="ثرموستات ذكي">
+          <div class="card-shine"></div>
+          <div class="product-card__image">
+            <img src="../assets/images/IMG_2058.JPG.jpeg" alt="Smart Thermostat">
+            <div class="product-card__overlay"><span class="product-card__overlay-btn">👁 عرض سريع</span></div>
+          </div>
+          <p class="product-card__category" data-i18n="p12_category">الإلكترونيات</p>
+          <h3 class="product-card__title" data-i18n="p12_title">ثرموستات ذكي</h3>
+          <div class="product-card__actions">
+            <div><div class="product-card__price" data-i18n="p12_price">199,000 د.ع</div></div>
+            <button class="btn btn--sm btn--primary" data-i18n="add_to_cart">أضف للسلة</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- No results message -->
+      <div id="noResults" style="display:none; text-align:center; padding:var(--space-4xl) 0;">
+        <div style="font-size:3rem; margin-bottom:var(--space-md);">🔍</div>
+        <h3 style="font-size:var(--fs-xl); color:var(--color-gray-700); margin-bottom:var(--space-sm);">لم يتم العثور على منتجات</h3>
+        <p style="color:var(--color-gray-400);">حاول البحث بكلمات مختلفة</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <img src="../assets/logo.svg" alt="Asia Store">
+          <p data-i18n="footer_desc">وجهتك المميزة لأحدث الأجهزة الذكية وحلول التكنولوجيا المبتكرة منذ 2011.</p>
+          <div class="footer__social">
+            <a href="https://www.instagram.com/asia.store.iq" target="_blank" rel="noopener">📷</a>
+            <a href="https://www.facebook.com/share/1KiaEUe9XV" target="_blank" rel="noopener">📘</a>
+            <a href="https://www.tiktok.com/@asia.store24" target="_blank" rel="noopener">🎵</a>
+            <a href="https://wa.me/9647746400400" target="_blank" rel="noopener">💬</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__title" data-i18n="footer_quick">روابط سريعة</h4>
+          <ul class="footer__links">
+            <li><a href="../index.html" data-i18n="nav_home">الرئيسية</a></li>
+            <li><a href="products.html" data-i18n="nav_products">المنتجات</a></li>
+            <li><a href="about.html" data-i18n="nav_about">من نحن</a></li>
+            <li><a href="contact.html" data-i18n="nav_contact">تواصل معنا</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer__title" data-i18n="footer_support">الدعم</h4>
+          <ul class="footer__links">
+            <li><a href="warranty.html" data-i18n="footer_warranty">سياسة الضمان</a></li>
+            <li><a href="returns.html" data-i18n="footer_returns">الاسترجاع</a></li>
+            <li><a href="faq.html" data-i18n="footer_faq">الأسئلة الشائعة</a></li>
+            <li><a href="privacy.html" data-i18n="footer_privacy">سياسة الخصوصية</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer__title" data-i18n="footer_contact">معلومات التواصل</h4>
+          <ul class="footer__links">
+            <li>📍 بغداد – السبع أبكار</li>
+            <li><a href="tel:07746400400" dir="ltr">📞 07746400400</a></li>
+            <li><a href="tel:07747400400" dir="ltr">📞 07747400400</a></li>
+            <li>🕒 10:00 ص – 10:00 م</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p data-i18n="footer_rights">© 2025 آسيا ستور. جميع الحقوق محفوظة.</p>
+        <p data-i18n="footer_tagline">حيث تبدأ التقنية بثقة.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/i18n.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/cart.js"></script>
+  <script src="../js/auth.js"></script>
+
+  <script>
+    function filterProductsLive(query) {
+      const cards = document.querySelectorAll('.product-card');
+      const noResults = document.getElementById('noResults');
+      const q = query.toLowerCase().trim();
+      let visible = 0;
+
+      cards.forEach(card => {
+        const name = card.dataset.name || '';
+        const title = card.querySelector('.product-card__title')?.textContent.toLowerCase() || '';
+        const show = !q || name.includes(q) || title.includes(q);
+        card.style.display = show ? '' : 'none';
+        if (show) visible++;
+      });
+
+      noResults.style.display = visible === 0 ? 'block' : 'none';
+      const countEl = document.getElementById('resultCount');
+      if (countEl && q) countEl.textContent = `${visible} منتج مطابق`;
+      else if (countEl) countEl.textContent = '';
+    }
+
+    // Handle URL search param
+    window.addEventListener('load', () => {
+      const params = new URLSearchParams(window.location.search);
+      const search = params.get('search');
+      if (search) {
+        const input = document.getElementById('productSearchInput');
+        if (input) { input.value = search; filterProductsLive(search); }
+      }
+    });
+  </script>
 </body>
-
 </html>

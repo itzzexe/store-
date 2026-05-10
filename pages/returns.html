@@ -4,23 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="آسيا ستور - سياسة الاسترجاع. استبدال واسترجاع سهل خلال 7 أيام">
+    <meta name="description" content="آسيا ستور - سياسة الاسترجاع. استبدال واسترجاع سهل خلال 7 أيام من الشراء">
     <title>سياسة الاسترجاع | آسيا ستور - Asia Store</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Outfit:wght@300;400;500;600;700;900&family=Tajawal:wght@300;400;500;700;800;900&family=Bai+Jamjuree:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Outfit:wght@300;400;500;600;700;900&family=Tajawal:wght@300;400;500;700;800;900&family=Bai+Jamjuree:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/variables.css">
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/animations.css">
     <link rel="stylesheet" href="../css/components.css">
     <link rel="stylesheet" href="../css/pages.css">
+    <link rel="stylesheet" href="../css/support-pages.css">
 </head>
 
 <body>
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+
     <!-- Page Transition -->
-    <div class="page-transition">
+    <div class="page-transition" id="pageTransition">
         <div class="panel"></div>
         <div class="panel"></div>
         <div class="panel"></div>
@@ -28,30 +31,40 @@
         <div class="panel"></div>
     </div>
 
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
     <!-- Header -->
     <header class="header" id="header">
+        <div class="header__info">
+            <div class="container container--wide">
+                <span>📞 اتصل بنا: 07746400400</span>
+                <span>🚚 توصيل داخل بغداد</span>
+                <span>✅ ضمان أصلي على جميع المنتجات</span>
+            </div>
+        </div>
         <div class="header__top">
             <div class="container container--wide">
                 <div class="header__top-wrapper">
                     <div class="header__utilities">
-                        <a href="#" class="header__util-link">
+                        <a href="#" class="header__util-link" id="authTrigger">
                             <span class="header__util-icon">👤</span>
-                            <span class="header__util-text" data-i18n="nav_account">الحساب</span>
+                            <span class="header__util-text">الحساب</span>
                         </a>
                         <a href="#" class="header__util-link" id="cartTrigger">
                             <span class="header__util-icon">🛒</span>
-                            <span class="header__util-text" data-i18n="nav_cart">السلة</span>
+                            <span class="header__util-text">السلة</span>
                             <span class="cart-count">0</span>
                         </a>
                     </div>
                     <div class="header__search">
-                        <form class="search-bar">
-                            <input type="text" data-i18n-placeholder="search_placeholder" placeholder="ابحث عن المنتجات...">
+                        <form class="search-bar" id="searchForm">
+                            <input type="text" id="searchInput" placeholder="ابحث عن المنتجات...">
                             <button type="submit">🔍</button>
                         </form>
                     </div>
                     <a href="../index.html" class="header__logo">
-                        <img src="../assets/logo.svg" alt="Asia Store Logo">
+                        <div class="header__logo-icon">A</div>
                         <span class="header__logo-text">Asia Store</span>
                     </a>
                 </div>
@@ -61,10 +74,11 @@
             <div class="container container--wide">
                 <nav class="header__nav" id="mainNav">
                     <ul class="header__nav-list">
-                        <li><a href="../index.html" class="header__nav-link" data-i18n="nav_home">الرئيسية</a></li>
-                        <li><a href="products.html" class="header__nav-link" data-i18n="nav_products">المنتجات</a></li>
-                        <li><a href="about.html" class="header__nav-link" data-i18n="nav_about">من نحن</a></li>
-                        <li><a href="contact.html" class="header__nav-link" data-i18n="nav_contact">تواصل معنا</a></li>
+                        <li><a href="../index.html" class="header__nav-link">الرئيسية</a></li>
+                        <li><a href="products.html" class="header__nav-link">المنتجات</a></li>
+                        <li><a href="about.html" class="header__nav-link">من نحن</a></li>
+                        <li><a href="contact.html" class="header__nav-link">تواصل معنا</a></li>
+                        <li><a href="games.html" class="header__nav-link">ألعاب</a></li>
                     </ul>
                     <div class="lang-switcher">
                         <button class="lang-btn active" data-lang="ar">عربي</button>
@@ -79,21 +93,189 @@
     </header>
 
     <!-- Support Hero -->
-    <section class="support-hero" style="background: var(--surface-alt); padding: var(--space-4xl) 0;">
-        <div class="container" style="text-align: center;">
-            <div class="support-hero__icon" style="font-size: 3.5rem; margin-bottom: var(--space-md);">🔄</div>
-            <span class="section-header__label" data-i18n="returns_hero_label">سياسة الاسترجاع</span>
-            <h1 class="section-header__title" style="font-size: var(--fs-hero);" data-i18n="returns_hero_title">استرجاع واستبدال سهل</h1>
-            <p class="section-header__subtitle" data-i18n="returns_hero_subtitle">رضاك هو أولويتنا. جعلنا عملية الاسترجاع بسيطة وشفافة.</p>
+    <section class="support-hero">
+        <div class="container" style="text-align: center; position: relative; z-index: 1;">
+            <div class="support-hero__icon">🔄</div>
+            <span class="section-header__label">سياسة الاسترجاع</span>
+            <h1 class="section-header__title" style="font-size: var(--fs-hero);">استرجاع واستبدال سهل</h1>
+            <p class="section-header__subtitle">رضاك هو أولويتنا. جعلنا عملية الاسترجاع بسيطة وشفافة تماماً.</p>
+            <p class="support-updated">خلال 7 أيام من الشراء | آخر تحديث: مايو 2025</p>
         </div>
     </section>
 
-    <!-- Content -->
+    <!-- Key Points -->
+    <section class="section" style="padding: var(--space-2xl) 0; background: var(--color-white); border-bottom: 1px solid var(--color-gray-100);">
+        <div class="container">
+            <div class="support-cards-grid--4 reveal">
+                <div class="support-info-card">
+                    <span class="support-info-card__icon">📅</span>
+                    <div class="support-info-card__title">7 أيام</div>
+                    <div class="support-info-card__desc">مهلة الاسترجاع من تاريخ استلام المنتج</div>
+                </div>
+                <div class="support-info-card">
+                    <span class="support-info-card__icon">📦</span>
+                    <div class="support-info-card__title">العبوة الأصلية</div>
+                    <div class="support-info-card__desc">يجب إعادة المنتج بعبوته الأصلية الكاملة</div>
+                </div>
+                <div class="support-info-card">
+                    <span class="support-info-card__icon">🧾</span>
+                    <div class="support-info-card__title">الفاتورة مطلوبة</div>
+                    <div class="support-info-card__desc">احتفظ بفاتورة الشراء لإتمام عملية الاسترجاع</div>
+                </div>
+                <div class="support-info-card">
+                    <span class="support-info-card__icon">💰</span>
+                    <div class="support-info-card__title">استرداد كامل</div>
+                    <div class="support-info-card__desc">استرداد كامل للمبلغ أو استبدال بمنتج آخر</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Steps -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header reveal" style="text-align: center; margin-bottom: var(--space-3xl);">
+                <span class="section-header__label">الخطوات</span>
+                <h2 class="section-header__title">كيف تسترجع منتجاتك؟</h2>
+                <p class="section-header__subtitle">إجراء الاسترجاع بسيط ولا يستغرق أكثر من 24 ساعة</p>
+            </div>
+            <div class="steps-grid reveal">
+                <div class="step-card">
+                    <div class="step-card__number">1</div>
+                    <h3 class="step-card__title">تواصل خلال 7 أيام</h3>
+                    <p class="step-card__desc">أرسل رسالة واتساب أو اتصل بنا خلال 7 أيام من تاريخ الشراء</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-card__number">2</div>
+                    <h3 class="step-card__title">أخبرنا بالسبب</h3>
+                    <p class="step-card__desc">أخبرنا بسبب الاسترجاع وأرسل صورة للمنتج وفاتورة الشراء</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-card__number">3</div>
+                    <h3 class="step-card__title">إحضار المنتج</h3>
+                    <p class="step-card__desc">أحضر المنتج بعبوته الأصلية وجميع محتوياته إلى المتجر</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-card__number">4</div>
+                    <h3 class="step-card__title">الاسترداد أو الاستبدال</h3>
+                    <p class="step-card__desc">اختر بين استرداد المبلغ كاملاً أو الاستبدال بمنتج مماثل</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conditions -->
+    <section class="section" style="background: var(--color-gray-50);">
+        <div class="container">
+            <div class="support-highlight-grid reveal">
+                <div class="support-highlight-card">
+                    <div class="support-highlight-card__icon">✅</div>
+                    <h3>شروط قبول الاسترجاع</h3>
+                    <ul class="support-list support-list--check" style="margin-top: var(--space-md);">
+                        <li class="support-list__item">
+                            <span class="support-list__icon">✓</span>
+                            <span>المنتج في حالته الأصلية دون استخدام فعلي</span>
+                        </li>
+                        <li class="support-list__item">
+                            <span class="support-list__icon">✓</span>
+                            <span>العبوة الأصلية كاملة مع جميع الملحقات</span>
+                        </li>
+                        <li class="support-list__item">
+                            <span class="support-list__icon">✓</span>
+                            <span>فاتورة الشراء الأصلية</span>
+                        </li>
+                        <li class="support-list__item">
+                            <span class="support-list__icon">✓</span>
+                            <span>الطلب خلال 7 أيام من تاريخ الشراء</span>
+                        </li>
+                        <li class="support-list__item">
+                            <span class="support-list__icon">✓</span>
+                            <span>عيب مصنعي ثابت أو منتج مختلف عما طُلب</span>
+                        </li>
+                        <li class="support-list__item">
+                            <span class="support-list__icon">✓</span>
+                            <span>جميع الملصقات والأختام الأصلية سليمة</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="support-highlight-card support-highlight-card--alert">
+                    <div class="support-highlight-card__icon">⚠️</div>
+                    <h3>حالات لا يُقبل فيها الاسترجاع</h3>
+                    <ul class="support-list" style="margin-top: var(--space-md);">
+                        <li class="support-list__item">
+                            <span class="support-list__icon">✗</span>
+                            <span>انتهاء مدة الـ7 أيام المحددة للاسترجاع</span>
+                        </li>
+                        <li class="support-list__item">
+                            <span class="support-list__icon">✗</span>
+                            <span>المنتجات المستخدمة فعلياً مع ظهور آثار الاستخدام</span>
+                        </li>
+                        <li class="support-list__item">
+                            <span class="support-list__icon">✗</span>
+                            <span>إزالة الملصقات أو فتح الأختام الرسمية</span>
+                        </li>
+                        <li class="support-list__item">
+                            <span class="support-list__icon">✗</span>
+                            <span>التلف الناتج عن سوء الاستخدام أو الإهمال</span>
+                        </li>
+                        <li class="support-list__item">
+                            <span class="support-list__icon">✗</span>
+                            <span>غياب الفاتورة أو العبوة الأصلية</span>
+                        </li>
+                        <li class="support-list__item">
+                            <span class="support-list__icon">✗</span>
+                            <span>المنتجات المخصصة أو المبرمجة حسب الطلب</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Returns Policy Notes -->
     <section class="section">
         <div class="container container--narrow">
-             <div class="reveal" style="background: var(--color-white); padding: var(--space-2xl); border-radius: var(--radius-lg); border: 1px solid var(--color-gray-200);">
-                <p style="color: var(--color-gray-600); line-height: var(--lh-relaxed);" data-i18n="returns_intro">نفخر بتقديم خدمة استبدال واسترجاع مرنة تضمن حق العميل في اختيار المنتج المناسب له، وفقاً للشروط المتبعة.</p>
-             </div>
+            <div class="section-header reveal" style="text-align: center; margin-bottom: var(--space-3xl);">
+                <span class="section-header__label">تفاصيل إضافية</span>
+                <h2 class="section-header__title">معلومات مهمة</h2>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: var(--space-md);" class="reveal">
+                <div style="background: var(--color-white); border: 1px solid var(--color-gray-200); border-radius: var(--radius-lg); padding: var(--space-xl); box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+                    <h4 style="font-weight: var(--fw-bold); color: var(--color-gray-900); margin-bottom: var(--space-sm);">💰 كيف يتم الاسترداد؟</h4>
+                    <p style="color: var(--color-gray-600); font-size: var(--fs-sm); line-height: var(--lh-relaxed);">يتم استرداد المبلغ نقداً فوراً عند تسليم المنتج للمتجر وتحقق الشروط. في حالة الطلبات عبر الشحن، يُرسل المبلغ عبر التحويل البنكي خلال 3-5 أيام عمل.</p>
+                </div>
+                <div style="background: var(--color-white); border: 1px solid var(--color-gray-200); border-radius: var(--radius-lg); padding: var(--space-xl); box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+                    <h4 style="font-weight: var(--fw-bold); color: var(--color-gray-900); margin-bottom: var(--space-sm);">🔄 الاستبدال بدلاً من الاسترجاع</h4>
+                    <p style="color: var(--color-gray-600); font-size: var(--fs-sm); line-height: var(--lh-relaxed);">يمكنك اختيار استبدال المنتج بنفس الطراز أو بمنتج مختلف مع دفع أو استرداد فرق السعر. الاستبدال متاح ضمن نفس الشروط وفي نفس المدة الزمنية.</p>
+                </div>
+                <div style="background: var(--color-white); border: 1px solid var(--color-gray-200); border-radius: var(--radius-lg); padding: var(--space-xl); box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+                    <h4 style="font-weight: var(--fw-bold); color: var(--color-gray-900); margin-bottom: var(--space-sm);">🚚 تكاليف الشحن عند الاسترجاع</h4>
+                    <p style="color: var(--color-gray-600); font-size: var(--fs-sm); line-height: var(--lh-relaxed);">في حالة وجود عيب مصنعي ثابت، نتحمل تكاليف الشحن عند الاسترجاع. أما إذا كان الاسترجاع لأسباب شخصية، فتكون تكاليف الشحن على العميل.</p>
+                </div>
+                <div style="background: rgba(27, 198, 180, 0.05); border: 1px solid rgba(27, 198, 180, 0.2); border-radius: var(--radius-lg); padding: var(--space-xl);">
+                    <h4 style="font-weight: var(--fw-bold); color: var(--color-primary); margin-bottom: var(--space-sm);">📞 هل لديك استفسار؟</h4>
+                    <p style="color: var(--color-gray-600); font-size: var(--fs-sm); line-height: var(--lh-relaxed);">لأي استفسار حول سياسة الاسترجاع أو الاستبدال، تواصل معنا مباشرة عبر واتساب على الرقم 07746400400 وسيسعدنا مساعدتك.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section" style="background: var(--color-gray-50);">
+        <div class="container">
+            <div class="support-cta reveal">
+                <span style="font-size: 3rem; display: block; margin-bottom: var(--space-md);">🔄</span>
+                <h2 style="font-size: var(--fs-2xl); font-weight: var(--fw-bold); color: var(--color-gray-900); margin-bottom: var(--space-sm);">تريد استرجاع منتج؟</h2>
+                <p style="color: var(--color-gray-600); margin-bottom: var(--space-xl);">تواصل معنا الآن وسنساعدك في أسرع وقت</p>
+                <div style="display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap;">
+                    <a href="https://wa.me/9647746400400" target="_blank" class="btn btn--primary magnetic" style="display: inline-flex; align-items: center; gap: 8px;">
+                        <span>📱</span><span>تواصل عبر واتساب</span>
+                    </a>
+                    <a href="contact.html" class="btn btn--outline magnetic" style="display: inline-flex; align-items: center; gap: 8px;">
+                        <span>📍</span><span>زيارة المتجر</span>
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -102,37 +284,38 @@
         <div class="container">
             <div class="footer__grid">
                 <div class="footer__brand">
-                    <img src="../assets/logo.svg" alt="Asia Store">
-                    <p data-i18n="footer_desc">وجهتك المميزة لأحدث الأجهزة الذكية وحلول التكنولوجيا المبتكرة منذ 2011.</p>
+                    <div class="footer__logo">
+                        <div class="header__logo-icon">A</div>
+                        <span>Asia Store</span>
+                    </div>
+                    <p>وجهتك المميزة لأحدث الأجهزة الذكية وحلول التكنولوجيا المبتكرة منذ 2011.</p>
                     <div class="footer__social">
                         <a href="https://www.instagram.com/asia.store.iq" target="_blank" aria-label="Instagram">📷</a>
                         <a href="https://www.facebook.com/share/1KiaEUe9XV" target="_blank" aria-label="Facebook">📘</a>
                         <a href="https://www.tiktok.com/@asia.store24" target="_blank" aria-label="TikTok">🎵</a>
+                        <a href="https://wa.me/9647746400400" target="_blank" aria-label="WhatsApp">📱</a>
                     </div>
                 </div>
-
                 <div>
-                    <h4 class="footer__title" data-i18n="footer_quick">روابط سريعة</h4>
+                    <h4 class="footer__title">روابط سريعة</h4>
                     <ul class="footer__links">
-                        <li><a href="../index.html" data-i18n="nav_home">الرئيسية</a></li>
-                        <li><a href="products.html" data-i18n="nav_products">المنتجات</a></li>
-                        <li><a href="about.html" data-i18n="nav_about">من نحن</a></li>
-                        <li><a href="contact.html" data-i18n="nav_contact">تواصل معنا</a></li>
+                        <li><a href="../index.html">الرئيسية</a></li>
+                        <li><a href="products.html">المنتجات</a></li>
+                        <li><a href="about.html">من نحن</a></li>
+                        <li><a href="contact.html">تواصل معنا</a></li>
                     </ul>
                 </div>
-
                 <div>
-                    <h4 class="footer__title" data-i18n="footer_support">الدعم</h4>
+                    <h4 class="footer__title">الدعم</h4>
                     <ul class="footer__links">
-                        <li><a href="warranty.html" data-i18n="footer_warranty">سياسة الضمان</a></li>
-                        <li><a href="returns.html" data-i18n="footer_returns">الاسترجاع</a></li>
-                        <li><a href="faq.html" data-i18n="footer_faq">الأسئلة الشائعة</a></li>
-                        <li><a href="privacy.html" data-i18n="footer_privacy">سياسة الخصوصية</a></li>
+                        <li><a href="warranty.html">سياسة الضمان</a></li>
+                        <li><a href="returns.html">الاسترجاع</a></li>
+                        <li><a href="faq.html">الأسئلة الشائعة</a></li>
+                        <li><a href="privacy.html">سياسة الخصوصية</a></li>
                     </ul>
                 </div>
-
                 <div>
-                    <h4 class="footer__title" data-i18n="footer_contact">معلومات التواصل</h4>
+                    <h4 class="footer__title">معلومات التواصل</h4>
                     <ul class="footer__links">
                         <li>📍 بغداد – السبع أبكار</li>
                         <li>📞 07746400400</li>
@@ -141,10 +324,9 @@
                     </ul>
                 </div>
             </div>
-
             <div class="footer__bottom">
-                <p data-i18n="footer_rights">© 2024 آسيا ستور. جميع الحقوق محفوظة.</p>
-                <p data-i18n="footer_tagline">حيث تبدأ التقنية بثقة.</p>
+                <p>© 2025 آسيا ستور. جميع الحقوق محفوظة.</p>
+                <p>حيث تبدأ التقنية بثقة.</p>
             </div>
         </div>
     </footer>
@@ -152,6 +334,7 @@
     <script src="../js/i18n.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/cart.js"></script>
+    <script src="../js/auth.js"></script>
 </body>
 
 </html>

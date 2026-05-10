@@ -2,162 +2,171 @@
    ASIA STORE - Base & Reset Styles
    ======================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Tajawal:wght@300;400;500;700;800;900&family=Bai+Jamjuree:wght@300;400;500;600;700&display=swap');
-
 *,
 *::before,
 *::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html {
-    scroll-behavior: smooth;
-    font-size: 16px;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  color-scheme: light only;
+  background-color: #FFFFFF;
 }
 
 body {
-    font-family: var(--font-primary);
-    font-weight: var(--fw-regular);
-    line-height: var(--lh-normal);
-    color: var(--color-gray-800);
-    background: var(--surface-main);
-    overflow-x: hidden;
-    min-height: 100vh;
+  font-family: var(--font-primary);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-normal);
+  color: #1E293B;
+  background: #FFFFFF;
+  overflow-x: hidden;
+  min-height: 100vh;
+  cursor: none;
+  -webkit-text-size-adjust: 100%;
+  color-scheme: light;
 }
 
 [dir="rtl"] body {
-    font-family: var(--font-arabic);
+  font-family: var(--font-arabic);
+}
+
+@media (hover: none) {
+  body { cursor: auto; }
 }
 
 img {
-    max-width: 100%;
-    height: auto;
-    display: block;
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 a {
-    text-decoration: none;
-    color: inherit;
-    transition: var(--transition-base);
+  text-decoration: none;
+  color: inherit;
+  transition: color var(--transition-base);
 }
 
-ul,
-ol {
-    list-style: none;
-}
+ul, ol { list-style: none; }
 
 button {
-    border: none;
-    background: none;
-    cursor: pointer;
-    font-family: inherit;
-    font-size: inherit;
-    color: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
 }
 
 input,
 textarea,
 select {
-    font-family: inherit;
-    font-size: inherit;
-    color: var(--color-gray-800);
-    outline: none;
-    border: none;
-    background: none;
+  font-family: inherit;
+  font-size: inherit;
+  color: var(--color-gray-800);
+  outline: none;
+  border: none;
+  background: none;
 }
 
-/* Container */
+/* ---- Containers ---- */
 .container {
-    width: 100%;
-    max-width: var(--container-max);
-    margin: 0 auto;
-    padding: 0 var(--container-padding);
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
 }
+.container--wide   { max-width: var(--container-wide); }
+.container--narrow { max-width: var(--container-narrow); }
 
-.container--wide {
-    max-width: var(--container-wide);
-}
-
-.container--narrow {
-    max-width: var(--container-narrow);
-}
-
-/* Section */
+/* ---- Section ---- */
 .section {
-    padding: var(--space-section) 0;
-    position: relative;
+  padding: var(--space-section) 0;
+  position: relative;
 }
 
-/* Gradient Text */
+/* ---- Text Utilities ---- */
 .gradient-text {
-    background: var(--gradient-primary);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
+.text-primary { color: var(--color-primary); }
+.text-muted   { color: var(--color-gray-500); }
 
-/* Selection */
+/* ---- Selection ---- */
 ::selection {
-    background: rgba(27, 198, 180, 0.2);
-    color: var(--color-primary-dark);
+  background: rgba(27, 198, 180, 0.2);
+  color: var(--color-primary-dark);
 }
 
-/* Scrollbar */
-::-webkit-scrollbar {
-    width: 6px;
+/* ---- Custom Scrollbar ---- */
+::-webkit-scrollbar       { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--color-gray-100); }
+::-webkit-scrollbar-thumb { background: var(--color-primary); border-radius: var(--radius-full); }
+::-webkit-scrollbar-thumb:hover { background: var(--color-primary-dark); }
+
+/* ---- Focus Visible ---- */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
 }
 
-::-webkit-scrollbar-track {
-    background: var(--color-gray-100);
-}
-
-::-webkit-scrollbar-thumb {
-    background: var(--color-primary);
-    border-radius: var(--radius-full);
-}
-
-/* Page Transition Overlay (Simplified) */
-.page-transition {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 9999;
-    pointer-events: none;
-    display: flex;
-}
-
-.page-transition .panel {
-    flex: 1;
-    background: var(--color-primary);
-    transform: scaleY(0);
-    transform-origin: bottom;
-}
-
-.page-transition.active .panel {
-    animation: panelUp 0.5s ease forwards;
-}
-
-@keyframes panelUp {
-    0% { transform: scaleY(0); transform-origin: bottom; }
-    50% { transform: scaleY(1); transform-origin: bottom; }
-    51% { transform: scaleY(1); transform-origin: top; }
-    100% { transform: scaleY(0); transform-origin: top; }
-}
-
-/* Visually Hidden */
+/* ---- Visually Hidden ---- */
 .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    border: 0;
-}
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* ---- Responsive utilities ---- */
+@media (max-width: 768px) {
+  .hide-mobile { display: none !important; }
+}
+@media (min-width: 769px) {
+  .hide-desktop { display: none !important; }
+}
+
+/* ---- Loading state ---- */
+.page-loading {
+  position: fixed;
+  inset: 0;
+  background: var(--color-white);
+  z-index: 99998;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.4s;
+}
+.page-loading.hidden { opacity: 0; pointer-events: none; }
+
+/* ---- Glass effect ---- */
+.glass {
+  background: var(--surface-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: var(--border-glass);
+}
+
+/* ---- Divider ---- */
+.divider {
+  height: 1px;
+  background: var(--color-gray-100);
+  margin: var(--space-section) 0;
+}
+.divider--primary {
+  background: linear-gradient(90deg, transparent, var(--color-primary-light), transparent);
+}

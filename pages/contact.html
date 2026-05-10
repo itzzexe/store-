@@ -2,206 +2,310 @@
 <html lang="ar" dir="rtl">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="آسيا ستور - تواصل معنا في بغداد، السبع أبكار. هاتف: 07746400400">
-    <title>تواصل معنا | آسيا ستور - Asia Store</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Outfit:wght@300;400;500;600;700;900&family=Tajawal:wght@300;400;500;700;800;900&family=Bai+Jamjuree:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="../css/variables.css">
-    <link rel="stylesheet" href="../css/base.css">
-    <link rel="stylesheet" href="../css/animations.css">
-    <link rel="stylesheet" href="../css/components.css">
-    <link rel="stylesheet" href="../css/pages.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="آسيا ستور - تواصل معنا في بغداد، السبع أبكار. هاتف: 07746400400">
+  <title>تواصل معنا | آسيا ستور - Asia Store</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Outfit:wght@300;400;500;600;700;900&family=Tajawal:wght@300;400;500;700;800;900&family=Bai+Jamjuree:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages.css">
 </head>
 
 <body>
-    <!-- Page Transition -->
-    <div class="page-transition">
-        <div class="panel"></div>
-        <div class="panel"></div>
-        <div class="panel"></div>
-        <div class="panel"></div>
-        <div class="panel"></div>
+  <div class="page-transition" id="pageTransition">
+    <div class="panel"></div><div class="panel"></div><div class="panel"></div>
+    <div class="panel"></div><div class="panel"></div>
+  </div>
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- HEADER -->
+  <header class="header" id="header">
+    <div class="header__info">
+      <div class="container container--wide">
+        <span>🚚 <span data-i18n="header_shipping">توصيل مجاني للطلبات أكثر من 100,000 د.ع</span></span>
+        <span dir="ltr">📞 0774 640 0400</span>
+      </div>
     </div>
-
-    <!-- Header -->
-    <header class="header" id="header">
-        <div class="header__top">
-            <div class="container container--wide">
-                <div class="header__top-wrapper">
-                    <div class="header__utilities">
-                        <a href="#" class="header__util-link" id="accountTrigger">
-                            <span class="header__util-icon">👤</span>
-                            <span class="header__util-text" data-i18n="nav_account">الحساب</span>
-                        </a>
-                        <a href="#" class="header__util-link" id="cartTrigger">
-                            <span class="header__util-icon">🛒</span>
-                            <span class="header__util-text" data-i18n="nav_cart">السلة</span>
-                            <span class="cart-count">0</span>
-                        </a>
-                    </div>
-                    <div class="header__search">
-                        <form class="search-bar">
-                            <input type="text" data-i18n-placeholder="search_placeholder" placeholder="ابحث عن المنتجات...">
-                            <button type="submit">🔍</button>
-                        </form>
-                    </div>
-                    <a href="../index.html" class="header__logo">
-                        <img src="../assets/logo.svg" alt="Asia Store Logo">
-                        <span class="header__logo-text">Asia Store</span>
-                    </a>
-                </div>
-            </div>
+    <div class="header__top">
+      <div class="container container--wide">
+        <div class="header__top-wrapper">
+          <a href="../index.html" class="header__logo">
+            <img src="../assets/logo.svg" alt="Asia Store Logo">
+            <span class="header__logo-text">Asia <span>Store</span></span>
+          </a>
+          <div class="header__search">
+            <form class="search-bar" id="searchForm">
+              <input type="text" id="searchInput" data-i18n-placeholder="search_placeholder" placeholder="ابحث عن المنتجات...">
+              <button type="submit">🔍</button>
+            </form>
+          </div>
+          <div class="header__utilities">
+            <a href="#" class="header__util-link" id="accountTrigger">
+              <span class="header__util-icon">👤</span>
+              <span data-i18n="nav_account">الحساب</span>
+            </a>
+            <a href="#" class="header__util-link" id="cartTrigger">
+              <span class="header__util-icon">🛒</span>
+              <span data-i18n="nav_cart">السلة</span>
+              <span class="cart-count">0</span>
+            </a>
+          </div>
         </div>
-        <div class="header__bottom">
-            <div class="container container--wide">
-                <nav class="header__nav" id="mainNav">
-                    <ul class="header__nav-list">
-                        <li><a href="../index.html" class="header__nav-link" data-i18n="nav_home">الرئيسية</a></li>
-                        <li><a href="products.html" class="header__nav-link" data-i18n="nav_products">المنتجات</a></li>
-                        <li><a href="about.html" class="header__nav-link" data-i18n="nav_about">من نحن</a></li>
-                        <li><a href="contact.html" class="header__nav-link active" data-i18n="nav_contact">تواصل معنا</a></li>
-                    </ul>
-                    <div class="lang-switcher">
-                        <button class="lang-btn active" data-lang="ar">عربي</button>
-                        <button class="lang-btn" data-lang="en">EN</button>
-                    </div>
-                </nav>
-                <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
-                    <span></span><span></span><span></span>
-                </button>
+      </div>
+    </div>
+    <div class="header__bottom">
+      <div class="container container--wide">
+        <nav class="header__nav" id="mainNav">
+          <div class="lang-switcher">
+            <button class="lang-btn active" data-lang="ar">عربي</button>
+            <button class="lang-btn" data-lang="en">EN</button>
+          </div>
+          <ul class="header__nav-list">
+            <li><a href="../index.html" class="header__nav-link" data-i18n="nav_home">الرئيسية</a></li>
+            <li><a href="products.html" class="header__nav-link" data-i18n="nav_products">المنتجات</a></li>
+            <li><a href="about.html" class="header__nav-link" data-i18n="nav_about">من نحن</a></li>
+            <li><a href="contact.html" class="header__nav-link active" data-i18n="nav_contact">تواصل معنا</a></li>
+            <li><a href="games.html" class="header__nav-link" data-i18n="nav_games">الألعاب</a></li>
+          </ul>
+        </nav>
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTACT HERO -->
+  <section class="contact-hero">
+    <div class="bg-orb bg-orb--primary" style="width:400px;height:400px;top:-120px;left:-80px;"></div>
+    <div class="container">
+      <div style="text-align:center; max-width:680px; margin:0 auto;">
+        <span class="section-header__label hero-text-animate" data-i18n="contact_hero_label">تواصل معنا</span>
+        <h1 class="hero-text-animate" style="font-size:var(--fs-hero); font-weight:var(--fw-black); color:var(--color-gray-900); margin:var(--space-md) 0 var(--space-lg);" data-i18n="contact_hero_title">
+          نحن هنا لمساعدتك
+        </h1>
+        <p class="hero-text-animate" style="font-size:var(--fs-lg); color:var(--color-gray-500); line-height:var(--lh-relaxed);" data-i18n="contact_hero_subtitle">
+          يسعدنا سماعك. تواصل معنا عبر أي من قنواتنا وسنرد عليك في أقرب وقت.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT CONTENT -->
+  <section class="section" style="background:var(--color-white); padding-top:var(--space-3xl);">
+    <div class="container">
+      <div class="contact-grid">
+
+        <!-- Left: Info Cards + Social -->
+        <div>
+          <!-- Location -->
+          <div class="contact-info-card reveal">
+            <div class="contact-info-card__icon-wrap">📍</div>
+            <div>
+              <h3 class="contact-info-card__title" data-i18n="contact_location_title">موقعنا</h3>
+              <p class="contact-info-card__text" data-i18n="contact_location_text">
+                بغداد – السبع أبكار – الشارع العام – مجاور ثانوية الانتصار
+              </p>
+              <a href="https://maps.app.goo.gl/ENvk7UM61R91mKSx6" target="_blank" class="btn btn--sm btn--outline-dark" style="margin-top:var(--space-md);">
+                🗺 Google Maps
+              </a>
             </div>
-        </div>
-    </header>
+          </div>
 
-    <!-- Contact Hero -->
-    <section class="contact-hero" style="background: var(--surface-alt); padding: var(--space-4xl) 0;">
-        <div class="container" style="text-align: center;">
-            <div class="section-header">
-                <span class="section-header__label" data-i18n="contact_hero_label">تواصل معنا</span>
-                <h1 class="section-header__title" style="font-size: var(--fs-hero);" data-i18n="contact_hero_title">اتصل بنا</h1>
-                <p class="section-header__subtitle" data-i18n="contact_hero_subtitle">يسعدنا سماعك. تواصل معنا عبر أي من قنواتنا.</p>
+          <!-- Phone -->
+          <div class="contact-info-card reveal delay-1">
+            <div class="contact-info-card__icon-wrap">📞</div>
+            <div>
+              <h3 class="contact-info-card__title" data-i18n="contact_phone_title">الهاتف والواتساب</h3>
+              <p class="contact-info-card__text">
+                <a href="tel:07746400400" dir="ltr">07746400400</a><br>
+                <a href="tel:07747400400" dir="ltr">07747400400</a>
+              </p>
+              <a href="https://wa.me/9647746400400" target="_blank" class="btn btn--sm btn--primary" style="margin-top:var(--space-md);">
+                💬 WhatsApp
+              </a>
             </div>
-        </div>
-    </section>
+          </div>
 
-    <!-- Contact Content -->
-    <section class="section">
-        <div class="container">
-            <div class="contact-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4xl);">
-                <!-- Left: Info Cards -->
-                <div class="contact-info-cards" style="display: flex; flex-direction: column; gap: var(--space-xl);">
-                    <!-- Location -->
-                    <div class="contact-info-card reveal" style="background: var(--color-white); padding: var(--space-xl); border-radius: var(--radius-lg); border: 1px solid var(--color-gray-200); display: flex; gap: var(--space-lg); align-items: start;">
-                        <div style="font-size: 2rem;">📍</div>
-                        <div>
-                            <h3 style="font-size: var(--fs-lg); font-weight: var(--fw-bold); margin-bottom: var(--space-xs);" data-i18n="contact_location_title">موقعنا</h3>
-                            <p style="color: var(--color-gray-600); font-size: var(--fs-md); line-height: var(--lh-relaxed);" data-i18n="contact_location_text">بغداد – السبع أبكار – الشارع العام – مجاور ثانوية الانتصار</p>
-                            <a href="https://maps.app.goo.gl/ENvk7UM61R91mKSx6" target="_blank" class="btn btn--sm btn--outline-dark" style="margin-top:var(--space-md);">
-                                🗺 Google Maps
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Phone -->
-                    <div class="contact-info-card reveal" style="background: var(--color-white); padding: var(--space-xl); border-radius: var(--radius-lg); border: 1px solid var(--color-gray-200); display: flex; gap: var(--space-lg); align-items: start;">
-                        <div style="font-size: 2rem;">📞</div>
-                        <div>
-                            <h3 style="font-size: var(--fs-lg); font-weight: var(--fw-bold); margin-bottom: var(--space-xs);" data-i18n="contact_phone_title">الهاتف والواتساب</h3>
-                            <p style="color: var(--color-gray-600); font-size: var(--fs-md);">
-                                <a href="tel:07746400400" dir="ltr">07746400400</a><br>
-                                <a href="tel:07747400400" dir="ltr">07747400400</a>
-                            </p>
-                            <a href="https://wa.me/9647746400400" target="_blank" class="btn btn--sm btn--primary" style="margin-top:var(--space-md);">
-                                💬 WhatsApp
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right: Contact Form -->
-                <div class="contact-form-container reveal" style="background: var(--color-white); padding: var(--space-2xl); border-radius: var(--radius-lg); border: 1px solid var(--color-gray-200); box-shadow: var(--shadow-sm);">
-                    <h2 style="font-size: var(--fs-xl); font-weight: var(--fw-bold); margin-bottom: var(--space-xl);" data-i18n="contact_hero_label">أرسل لنا رسالة</h2>
-                    <form onsubmit="event.preventDefault(); alert('شكراً لتواصلك! سنرد عليك في أقرب وقت.');">
-                        <div class="form-group" style="margin-bottom: var(--space-lg);">
-                            <label style="display: block; margin-bottom: var(--space-xs); font-weight: var(--fw-medium);" data-i18n="contact_form_name">الاسم الكامل</label>
-                            <input type="text" required style="width: 100%; padding: var(--space-sm); border: 1px solid var(--color-gray-300); border-radius: var(--radius-md);" placeholder="الاسم الكامل">
-                        </div>
-                        <div class="form-group" style="margin-bottom: var(--space-lg);">
-                            <label style="display: block; margin-bottom: var(--space-xs); font-weight: var(--fw-medium);" data-i18n="contact_form_email">البريد الإلكتروني</label>
-                            <input type="email" required style="width: 100%; padding: var(--space-sm); border: 1px solid var(--color-gray-300); border-radius: var(--radius-md);" placeholder="البريد الإلكتروني">
-                        </div>
-                        <div class="form-group" style="margin-bottom: var(--space-lg);">
-                            <label style="display: block; margin-bottom: var(--space-xs); font-weight: var(--fw-medium);" data-i18n="contact_form_message">رسالتك</label>
-                            <textarea required style="width: 100%; padding: var(--space-sm); border: 1px solid var(--color-gray-300); border-radius: var(--radius-md); min-height: 120px;" placeholder="رسالتك"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn--primary btn--lg" style="width:100%;" data-i18n="contact_form_submit">إرسال الرسالة</button>
-                    </form>
-                </div>
+          <!-- Hours -->
+          <div class="contact-info-card reveal delay-2">
+            <div class="contact-info-card__icon-wrap">🕒</div>
+            <div>
+              <h3 class="contact-info-card__title">أوقات العمل</h3>
+              <p class="contact-info-card__text">
+                السبت – الخميس: 10:00 ص – 10:00 م<br>
+                الجمعة: 2:00 م – 10:00 م
+              </p>
             </div>
-        </div>
-    </section>
+          </div>
 
-    <!-- Footer -->
-    <footer class="footer" id="footer">
-        <div class="container">
-            <div class="footer__grid">
-                <div class="footer__brand">
-                    <img src="../assets/logo.svg" alt="Asia Store">
-                    <p data-i18n="footer_desc">وجهتك المميزة لأحدث الأجهزة الذكية وحلول التكنولوجيا المبتكرة منذ 2011.</p>
-                    <div class="footer__social">
-                        <a href="https://www.instagram.com/asia.store.iq" target="_blank" aria-label="Instagram">📷</a>
-                        <a href="https://www.facebook.com/share/1KiaEUe9XV" target="_blank" aria-label="Facebook">📘</a>
-                        <a href="https://www.tiktok.com/@asia.store24" target="_blank" aria-label="TikTok">🎵</a>
-                    </div>
-                </div>
-
+          <!-- Social Grid -->
+          <div class="reveal delay-3">
+            <h3 style="font-size:var(--fs-base); font-weight:var(--fw-bold); color:var(--color-gray-800); margin-bottom:var(--space-lg); margin-top:var(--space-xl);">
+              تابعنا على
+            </h3>
+            <div class="social-grid" style="grid-template-columns:1fr 1fr;">
+              <a href="https://www.instagram.com/asia.store.iq" target="_blank" class="social-card">
+                <div class="social-card__icon social-card__icon--instagram">📷</div>
                 <div>
-                    <h4 class="footer__title" data-i18n="footer_quick">روابط سريعة</h4>
-                    <ul class="footer__links">
-                        <li><a href="../index.html" data-i18n="nav_home">الرئيسية</a></li>
-                        <li><a href="products.html" data-i18n="nav_products">المنتجات</a></li>
-                        <li><a href="about.html" data-i18n="nav_about">من نحن</a></li>
-                        <li><a href="contact.html" data-i18n="nav_contact">تواصل معنا</a></li>
-                    </ul>
+                  <div class="social-card__name">Instagram</div>
+                  <div class="social-card__handle">@asia.store.iq</div>
                 </div>
-
+              </a>
+              <a href="https://www.facebook.com/share/1KiaEUe9XV" target="_blank" class="social-card">
+                <div class="social-card__icon social-card__icon--facebook">📘</div>
                 <div>
-                    <h4 class="footer__title" data-i18n="footer_support">الدعم</h4>
-                    <ul class="footer__links">
-                        <li><a href="warranty.html" data-i18n="footer_warranty">سياسة الضمان</a></li>
-                        <li><a href="returns.html" data-i18n="footer_returns">الاسترجاع</a></li>
-                        <li><a href="faq.html" data-i18n="footer_faq">الأسئلة الشائعة</a></li>
-                        <li><a href="privacy.html" data-i18n="footer_privacy">سياسة الخصوصية</a></li>
-                    </ul>
+                  <div class="social-card__name">Facebook</div>
+                  <div class="social-card__handle">Asia Store Iraq</div>
                 </div>
-
+              </a>
+              <a href="https://www.tiktok.com/@asia.store24" target="_blank" class="social-card">
+                <div class="social-card__icon social-card__icon--tiktok">🎵</div>
                 <div>
-                    <h4 class="footer__title" data-i18n="footer_contact">معلومات التواصل</h4>
-                    <ul class="footer__links">
-                        <li>📍 بغداد – السبع أبكار</li>
-                        <li>📞 07746400400</li>
-                        <li>📞 07747400400</li>
-                        <li>🕒 10:00 ص – 10:00 م</li>
-                    </ul>
+                  <div class="social-card__name">TikTok</div>
+                  <div class="social-card__handle">@asia.store24</div>
                 </div>
+              </a>
+              <a href="https://wa.me/9647746400400" target="_blank" class="social-card">
+                <div class="social-card__icon social-card__icon--whatsapp">💬</div>
+                <div>
+                  <div class="social-card__name">WhatsApp</div>
+                  <div class="social-card__handle">07746400400</div>
+                </div>
+              </a>
             </div>
-
-            <div class="footer__bottom">
-                <p data-i18n="footer_rights">© 2024 آسيا ستور. جميع الحقوق محفوظة.</p>
-                <p data-i18n="footer_tagline">حيث تبدأ التقنية بثقة.</p>
-            </div>
+          </div>
         </div>
-    </footer>
 
-    <script src="../js/i18n.js"></script>
-    <script src="../js/main.js"></script>
-    <script src="../js/cart.js"></script>
-    <script src="../js/auth.js"></script>
+        <!-- Right: Contact Form -->
+        <div class="contact-form-card reveal delay-1">
+          <h2 data-i18n="contact_form_title">أرسل لنا رسالة</h2>
+          <form id="contactForm" onsubmit="handleContactSubmit(event)">
+            <div class="form-group">
+              <label data-i18n="contact_form_name">الاسم الكامل</label>
+              <input type="text" required placeholder="أدخل اسمك الكامل" data-i18n-placeholder="contact_form_name_placeholder">
+            </div>
+            <div class="form-group">
+              <label data-i18n="contact_form_phone">رقم الهاتف</label>
+              <input type="tel" placeholder="07xxxxxxxxx" dir="ltr">
+            </div>
+            <div class="form-group">
+              <label data-i18n="contact_form_subject">الموضوع</label>
+              <input type="text" required placeholder="موضوع رسالتك" data-i18n-placeholder="contact_form_subject_placeholder">
+            </div>
+            <div class="form-group">
+              <label data-i18n="contact_form_message">رسالتك</label>
+              <textarea required placeholder="اكتب رسالتك هنا..."></textarea>
+            </div>
+            <button type="submit" class="btn btn--primary btn--lg btn--full" data-i18n="contact_form_submit">
+              📤 إرسال الرسالة
+            </button>
+          </form>
+
+          <!-- WhatsApp alternative -->
+          <div style="margin-top:var(--space-xl); padding-top:var(--space-xl); border-top:1px solid var(--color-gray-100); text-align:center;">
+            <p style="font-size:var(--fs-sm); color:var(--color-gray-500); margin-bottom:var(--space-md);">أو تواصل معنا مباشرة عبر واتساب</p>
+            <a href="https://wa.me/9647746400400" target="_blank" class="btn btn--outline-dark btn--lg">
+              💬 <span>تواصل عبر واتساب</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Map -->
+      <div class="contact-map reveal">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3337.8!2d44.3661!3d33.3152!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sAsia+Store+Baghdad!5e0!3m2!1sen!2siq!4v1"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Asia Store Location">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <img src="../assets/logo.svg" alt="Asia Store">
+          <p data-i18n="footer_desc">وجهتك المميزة لأحدث الأجهزة الذكية وحلول التكنولوجيا المبتكرة منذ 2011.</p>
+          <div class="footer__social">
+            <a href="https://www.instagram.com/asia.store.iq" target="_blank" rel="noopener">📷</a>
+            <a href="https://www.facebook.com/share/1KiaEUe9XV" target="_blank" rel="noopener">📘</a>
+            <a href="https://www.tiktok.com/@asia.store24" target="_blank" rel="noopener">🎵</a>
+            <a href="https://wa.me/9647746400400" target="_blank" rel="noopener">💬</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__title" data-i18n="footer_quick">روابط سريعة</h4>
+          <ul class="footer__links">
+            <li><a href="../index.html" data-i18n="nav_home">الرئيسية</a></li>
+            <li><a href="products.html" data-i18n="nav_products">المنتجات</a></li>
+            <li><a href="about.html" data-i18n="nav_about">من نحن</a></li>
+            <li><a href="contact.html" data-i18n="nav_contact">تواصل معنا</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer__title" data-i18n="footer_support">الدعم</h4>
+          <ul class="footer__links">
+            <li><a href="warranty.html" data-i18n="footer_warranty">سياسة الضمان</a></li>
+            <li><a href="returns.html" data-i18n="footer_returns">الاسترجاع</a></li>
+            <li><a href="faq.html" data-i18n="footer_faq">الأسئلة الشائعة</a></li>
+            <li><a href="privacy.html" data-i18n="footer_privacy">سياسة الخصوصية</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer__title" data-i18n="footer_contact">معلومات التواصل</h4>
+          <ul class="footer__links">
+            <li>📍 بغداد – السبع أبكار</li>
+            <li><a href="tel:07746400400" dir="ltr">📞 07746400400</a></li>
+            <li><a href="tel:07747400400" dir="ltr">📞 07747400400</a></li>
+            <li>🕒 10:00 ص – 10:00 م</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p data-i18n="footer_rights">© 2025 آسيا ستور. جميع الحقوق محفوظة.</p>
+        <p data-i18n="footer_tagline">حيث تبدأ التقنية بثقة.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="../js/i18n.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/cart.js"></script>
+  <script src="../js/auth.js"></script>
+  <script>
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('button[type="submit"]');
+      btn.textContent = '✅ تم الإرسال!';
+      btn.disabled = true;
+      setTimeout(() => {
+        btn.textContent = '📤 إرسال الرسالة';
+        btn.disabled = false;
+        e.target.reset();
+      }, 3000);
+    }
+    function showToast(msg, type = 'info') {
+      const c = document.getElementById('toastContainer');
+      const t = document.createElement('div');
+      t.className = `toast toast--${type}`;
+      t.textContent = msg;
+      c.appendChild(t);
+      setTimeout(() => { t.style.opacity = '0'; setTimeout(() => t.remove(), 300); }, 3000);
+    }
+  </script>
 </body>
-
 </html>

@@ -4,23 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="آسيا ستور - الأسئلة الشائعة. كل ما تحتاج معرفته عن خدماتنا ومنتجاتنا">
+    <meta name="description" content="آسيا ستور - الأسئلة الشائعة. كل ما تحتاج معرفته عن خدماتنا ومنتجاتنا وسياساتنا">
     <title>الأسئلة الشائعة | آسيا ستور - Asia Store</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Outfit:wght@300;400;500;600;700;900&family=Tajawal:wght@300;400;500;700;800;900&family=Bai+Jamjuree:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Outfit:wght@300;400;500;600;700;900&family=Tajawal:wght@300;400;500;700;800;900&family=Bai+Jamjuree:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/variables.css">
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/animations.css">
     <link rel="stylesheet" href="../css/components.css">
     <link rel="stylesheet" href="../css/pages.css">
+    <link rel="stylesheet" href="../css/support-pages.css">
 </head>
 
 <body>
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+
     <!-- Page Transition -->
-    <div class="page-transition">
+    <div class="page-transition" id="pageTransition">
         <div class="panel"></div>
         <div class="panel"></div>
         <div class="panel"></div>
@@ -28,13 +31,23 @@
         <div class="panel"></div>
     </div>
 
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
     <!-- Header -->
     <header class="header" id="header">
+        <div class="header__info">
+            <div class="container container--wide">
+                <span>📞 اتصل بنا: 07746400400</span>
+                <span>🚚 توصيل داخل بغداد</span>
+                <span>✅ ضمان أصلي على جميع المنتجات</span>
+            </div>
+        </div>
         <div class="header__top">
             <div class="container container--wide">
                 <div class="header__top-wrapper">
                     <div class="header__utilities">
-                        <a href="#" class="header__util-link">
+                        <a href="#" class="header__util-link" id="authTrigger">
                             <span class="header__util-icon">👤</span>
                             <span class="header__util-text" data-i18n="nav_account">الحساب</span>
                         </a>
@@ -45,13 +58,13 @@
                         </a>
                     </div>
                     <div class="header__search">
-                        <form class="search-bar">
-                            <input type="text" data-i18n-placeholder="search_placeholder" placeholder="ابحث عن المنتجات...">
+                        <form class="search-bar" id="searchForm">
+                            <input type="text" id="searchInput" data-i18n-placeholder="search_placeholder" placeholder="ابحث عن المنتجات...">
                             <button type="submit">🔍</button>
                         </form>
                     </div>
                     <a href="../index.html" class="header__logo">
-                        <img src="../assets/logo.svg" alt="Asia Store Logo">
+                        <div class="header__logo-icon">A</div>
                         <span class="header__logo-text">Asia Store</span>
                     </a>
                 </div>
@@ -65,6 +78,7 @@
                         <li><a href="products.html" class="header__nav-link" data-i18n="nav_products">المنتجات</a></li>
                         <li><a href="about.html" class="header__nav-link" data-i18n="nav_about">من نحن</a></li>
                         <li><a href="contact.html" class="header__nav-link" data-i18n="nav_contact">تواصل معنا</a></li>
+                        <li><a href="games.html" class="header__nav-link">ألعاب</a></li>
                     </ul>
                     <div class="lang-switcher">
                         <button class="lang-btn active" data-lang="ar">عربي</button>
@@ -79,25 +93,238 @@
     </header>
 
     <!-- Support Hero -->
-    <section class="support-hero" style="background: var(--surface-alt); padding: var(--space-4xl) 0;">
-        <div class="container" style="text-align: center;">
-            <div class="support-hero__icon" style="font-size: 3.5rem; margin-bottom: var(--space-md);">❓</div>
-            <span class="section-header__label" data-i18n="faq_hero_label">الأسئلة الشائعة</span>
-            <h1 class="section-header__title" style="font-size: var(--fs-hero);" data-i18n="faq_hero_title">الأسئلة المتكررة</h1>
-            <p class="section-header__subtitle" data-i18n="faq_hero_subtitle">اعثر على إجابات لأكثر الأسئلة شيوعاً حول منتجاتنا وخدماتنا.</p>
+    <section class="support-hero">
+        <div class="container" style="text-align: center; position: relative; z-index: 1;">
+            <div class="support-hero__icon">❓</div>
+            <span class="section-header__label">الأسئلة الشائعة</span>
+            <h1 class="section-header__title" style="font-size: var(--fs-hero);">الأسئلة المتكررة</h1>
+            <p class="section-header__subtitle">اعثر على إجابات لأكثر الأسئلة شيوعاً حول منتجاتنا وخدماتنا وسياساتنا.</p>
+            <p class="support-updated">آخر تحديث: مايو 2025</p>
         </div>
     </section>
 
-    <!-- Content -->
+    <!-- FAQ Stats -->
+    <section class="section" style="padding: var(--space-2xl) 0; background: var(--color-white); border-bottom: 1px solid var(--color-gray-100);">
+        <div class="container">
+            <div class="support-cards-grid--4 reveal">
+                <div class="support-info-card">
+                    <span class="support-info-card__icon">📦</span>
+                    <div class="support-info-card__title">المنتجات</div>
+                    <div class="support-info-card__desc">أسئلة عن التوفر والمواصفات والأسعار</div>
+                </div>
+                <div class="support-info-card">
+                    <span class="support-info-card__icon">🚚</span>
+                    <div class="support-info-card__title">الشحن والتوصيل</div>
+                    <div class="support-info-card__desc">معلومات عن مناطق التغطية والأوقات</div>
+                </div>
+                <div class="support-info-card">
+                    <span class="support-info-card__icon">🛡️</span>
+                    <div class="support-info-card__title">الضمان والإرجاع</div>
+                    <div class="support-info-card__desc">سياسات الضمان والاسترجاع والاستبدال</div>
+                </div>
+                <div class="support-info-card">
+                    <span class="support-info-card__icon">💳</span>
+                    <div class="support-info-card__title">الدفع والطلبات</div>
+                    <div class="support-info-card__desc">طرق الدفع وتتبع الطلبات</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Content -->
     <section class="section">
         <div class="container container--narrow">
-             <div class="reveal" style="display: flex; flex-direction: column; gap: var(--space-md);">
-                <div style="background: var(--color-white); padding: var(--space-lg); border-radius: var(--radius-md); border: 1px solid var(--color-gray-200);">
-                    <h3 style="font-size: var(--fs-md); margin-bottom: var(--space-sm);" data-i18n="faq_q1">ما هو آسيا ستور؟</h3>
-                    <p style="color: var(--color-gray-600); font-size: var(--fs-sm);" data-i18n="faq_a1">آسيا ستور هو مركز تقني متطور في بغداد يقدم أحدث الأجهزة الذكية.</p>
+
+            <!-- FAQ Tabs -->
+            <div class="faq-tabs reveal">
+                <button class="faq-tab active" onclick="filterFAQ('all', this)">الكل</button>
+                <button class="faq-tab" onclick="filterFAQ('products', this)">المنتجات</button>
+                <button class="faq-tab" onclick="filterFAQ('shipping', this)">الشحن</button>
+                <button class="faq-tab" onclick="filterFAQ('warranty', this)">الضمان</button>
+                <button class="faq-tab" onclick="filterFAQ('payment', this)">الدفع</button>
+                <button class="faq-tab" onclick="filterFAQ('store', this)">المتجر</button>
+            </div>
+
+            <!-- FAQ List -->
+            <div class="faq-list">
+
+                <!-- Products -->
+                <div class="faq-item reveal" data-faq-cat="products">
+                    <button class="faq-item__question">
+                        <span>ما هي المنتجات التي يبيعها آسيا ستور؟</span>
+                        <span class="faq-item__arrow">▼</span>
+                    </button>
+                    <div class="faq-item__answer">
+                        <p>آسيا ستور يوفر مجموعة واسعة من الأجهزة الذكية تشمل: هواتف آيفون وأندرويد (سامسونج، شاومي، هواوي)، أجهزة لابتوب وحاسوب، سماعات وأكسسوارات، أجهزة ألعاب، وأجهزة منزلية ذكية. جميع المنتجات أصلية 100% بضمان رسمي.</p>
+                    </div>
                 </div>
-                <!-- Add more FAQ items if needed -->
-             </div>
+
+                <div class="faq-item reveal" data-faq-cat="products">
+                    <button class="faq-item__question">
+                        <span>هل المنتجات أصلية وليست تقليد؟</span>
+                        <span class="faq-item__arrow">▼</span>
+                    </button>
+                    <div class="faq-item__answer">
+                        <p>نعم، جميع منتجاتنا 100% أصلية مستوردة مباشرة من الموزعين المعتمدين. نقدم ضماناً رسمياً من الشركة المصنعة على جميع المنتجات، ويمكنك التحقق من الأصالة عبر الرقم التسلسلي للجهاز.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal" data-faq-cat="products">
+                    <button class="faq-item__question">
+                        <span>هل يمكنني رؤية المنتجات قبل الشراء؟</span>
+                        <span class="faq-item__arrow">▼</span>
+                    </button>
+                    <div class="faq-item__answer">
+                        <p>بالطبع! يمكنك زيارة متجرنا في بغداد - السبع أبكار ورؤية المنتجات والتجربة قبل الشراء. يعمل المتجر من الساعة 10:00 صباحاً حتى 10:00 مساءً يومياً.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal" data-faq-cat="products">
+                    <button class="faq-item__question">
+                        <span>هل الأسعار المعروضة نهائية؟</span>
+                        <span class="faq-item__arrow">▼</span>
+                    </button>
+                    <div class="faq-item__answer">
+                        <p>الأسعار المعروضة على الموقع والمتجر هي الأسعار الرسمية. قد تتوفر عروض وخصومات خاصة بشكل دوري، ننصحك بمتابعة صفحاتنا على وسائل التواصل الاجتماعي للاطلاع على أحدث العروض.</p>
+                    </div>
+                </div>
+
+                <!-- Shipping -->
+                <div class="faq-item reveal" data-faq-cat="shipping">
+                    <button class="faq-item__question">
+                        <span>هل تتوفر خدمة التوصيل؟</span>
+                        <span class="faq-item__arrow">▼</span>
+                    </button>
+                    <div class="faq-item__answer">
+                        <p>نعم، نوفر خدمة التوصيل داخل بغداد. يمكنك الطلب عبر واتساب على الرقم 07746400400 وسنقوم بتوصيل طلبك في أقرب وقت ممكن خلال نفس اليوم أو اليوم التالي حسب الموقع.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal" data-faq-cat="shipping">
+                    <button class="faq-item__question">
+                        <span>ما هي مناطق التوصيل المتاحة؟</span>
+                        <span class="faq-item__arrow">▼</span>
+                    </button>
+                    <div class="faq-item__answer">
+                        <p>نوفر التوصيل حالياً داخل محافظة بغداد بجميع أحيائها. للمحافظات الأخرى، يمكن ترتيب الشحن عبر شركات الشحن المعتمدة مع إضافة رسوم شحن إضافية حسب المسافة.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal" data-faq-cat="shipping">
+                    <button class="faq-item__question">
+                        <span>كم يستغرق وقت التوصيل؟</span>
+                        <span class="faq-item__arrow">▼</span>
+                    </button>
+                    <div class="faq-item__answer">
+                        <p>التوصيل داخل بغداد يتم عادةً خلال 2-4 ساعات للطلبات المقدمة قبل الساعة 6 مساءً. الطلبات المتأخرة تُسلَّم في اليوم التالي. الشحن للمحافظات يستغرق 1-3 أيام عمل.</p>
+                    </div>
+                </div>
+
+                <!-- Warranty -->
+                <div class="faq-item reveal" data-faq-cat="warranty">
+                    <button class="faq-item__question">
+                        <span>ما هي مدة الضمان على المنتجات؟</span>
+                        <span class="faq-item__arrow">▼</span>
+                    </button>
+                    <div class="faq-item__answer">
+                        <p>مدة الضمان تختلف حسب نوع المنتج: الهواتف الذكية 12 شهراً، اللابتوبات 12-24 شهراً، السماعات والأكسسوارات 6 أشهر. الضمان يشمل العيوب المصنعية وأعطال الجهاز الطبيعية.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal" data-faq-cat="warranty">
+                    <button class="faq-item__question">
+                        <span>ماذا يشمل الضمان؟</span>
+                        <span class="faq-item__arrow">▼</span>
+                    </button>
+                    <div class="faq-item__answer">
+                        <p>الضمان يشمل: العيوب المصنعية، أعطال الشاشة غير الناتجة عن كسر، مشاكل البطارية ضمن المعدل الطبيعي، أعطال المكونات الداخلية. الضمان لا يشمل الكسر الخارجي، دخول السوائل، أو سوء الاستخدام.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal" data-faq-cat="warranty">
+                    <button class="faq-item__question">
+                        <span>كيف أستخدم الضمان؟</span>
+                        <span class="faq-item__arrow">▼</span>
+                    </button>
+                    <div class="faq-item__answer">
+                        <p>للاستفادة من الضمان: احتفظ بفاتورة الشراء - تواصل معنا عبر الهاتف أو واتساب - أحضر الجهاز إلى المتجر مع فاتورة الشراء - سيتم فحص الجهاز وإصلاحه أو استبداله مجاناً خلال مدة الضمان.</p>
+                    </div>
+                </div>
+
+                <!-- Payment -->
+                <div class="faq-item reveal" data-faq-cat="payment">
+                    <button class="faq-item__question">
+                        <span>ما هي طرق الدفع المقبولة؟</span>
+                        <span class="faq-item__arrow">▼</span>
+                    </button>
+                    <div class="faq-item__answer">
+                        <p>نقبل الدفع نقداً عند الاستلام أو في المتجر. كما نوفر إمكانية الدفع عبر التحويل البنكي لطلبات محددة. قريباً سنوفر خيارات دفع إلكتروني إضافية.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal" data-faq-cat="payment">
+                    <button class="faq-item__question">
+                        <span>هل يتوفر دفع بالأقساط؟</span>
+                        <span class="faq-item__arrow">▼</span>
+                    </button>
+                    <div class="faq-item__answer">
+                        <p>نعم، نوفر خيارات تقسيط لبعض المنتجات. يرجى التواصل معنا مباشرة لمعرفة المنتجات المتاحة بالتقسيط والشروط المطلوبة. عادةً يتطلب التقسيط دفعة أولى ووثائق رسمية.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal" data-faq-cat="payment">
+                    <button class="faq-item__question">
+                        <span>كيف يمكنني الطلب عبر الإنترنت؟</span>
+                        <span class="faq-item__arrow">▼</span>
+                    </button>
+                    <div class="faq-item__answer">
+                        <p>يمكنك الطلب عبر واتساب على الرقم 07746400400 أو 07747400400. أخبرنا بالمنتج الذي تريده وعنوانك وسنتولى الباقي. يمكنك أيضاً استخدام زر "اطلب عبر واتساب" على صفحة كل منتج.</p>
+                    </div>
+                </div>
+
+                <!-- Store -->
+                <div class="faq-item reveal" data-faq-cat="store">
+                    <button class="faq-item__question">
+                        <span>أين يقع متجر آسيا ستور؟</span>
+                        <span class="faq-item__arrow">▼</span>
+                    </button>
+                    <div class="faq-item__answer">
+                        <p>يقع متجرنا في بغداد - منطقة السبع أبكار. يمكنك التواصل معنا عبر الهاتف للحصول على الموقع الدقيق أو متابعة حساباتنا على وسائل التواصل الاجتماعي لرؤية الموقع.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal" data-faq-cat="store">
+                    <button class="faq-item__question">
+                        <span>ما هي أوقات الدوام الرسمية؟</span>
+                        <span class="faq-item__arrow">▼</span>
+                    </button>
+                    <div class="faq-item__answer">
+                        <p>المتجر يعمل يومياً من الساعة 10:00 صباحاً حتى 10:00 مساءً طوال أيام الأسبوع. في الأعياد الرسمية قد تتغير أوقات العمل، يُنصح بالتواصل المسبق للتأكد.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal" data-faq-cat="store">
+                    <button class="faq-item__question">
+                        <span>هل يمكنني التواصل معكم عبر وسائل التواصل الاجتماعي؟</span>
+                        <span class="faq-item__arrow">▼</span>
+                    </button>
+                    <div class="faq-item__answer">
+                        <p>نعم! يمكنك متابعتنا والتواصل معنا عبر: إنستغرام @asia.store.iq، فيسبوك asia.store.iq، تيك توك @asia.store24. نرد على الاستفسارات خلال ساعات العمل.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Still have questions? -->
+            <div class="support-cta reveal" style="margin-top: var(--space-3xl);">
+                <span style="font-size: 3rem; display: block; margin-bottom: var(--space-md);">💬</span>
+                <h2 style="font-size: var(--fs-2xl); font-weight: var(--fw-bold); color: var(--color-gray-900); margin-bottom: var(--space-sm);">لم تجد إجابتك؟</h2>
+                <p style="color: var(--color-gray-600); margin-bottom: var(--space-xl);">فريقنا جاهز للرد على جميع استفساراتك</p>
+                <a href="https://wa.me/9647746400400" target="_blank" class="btn btn--primary magnetic" style="display: inline-flex; align-items: center; gap: 8px;">
+                    <span>📱</span>
+                    <span>تواصل عبر واتساب</span>
+                </a>
+            </div>
         </div>
     </section>
 
@@ -106,37 +333,39 @@
         <div class="container">
             <div class="footer__grid">
                 <div class="footer__brand">
-                    <img src="../assets/logo.svg" alt="Asia Store">
-                    <p data-i18n="footer_desc">وجهتك المميزة لأحدث الأجهزة الذكية وحلول التكنولوجيا المبتكرة منذ 2011.</p>
+                    <div class="footer__logo">
+                        <div class="header__logo-icon">A</div>
+                        <span>Asia Store</span>
+                    </div>
+                    <p>وجهتك المميزة لأحدث الأجهزة الذكية وحلول التكنولوجيا المبتكرة منذ 2011.</p>
                     <div class="footer__social">
                         <a href="https://www.instagram.com/asia.store.iq" target="_blank" aria-label="Instagram">📷</a>
                         <a href="https://www.facebook.com/share/1KiaEUe9XV" target="_blank" aria-label="Facebook">📘</a>
                         <a href="https://www.tiktok.com/@asia.store24" target="_blank" aria-label="TikTok">🎵</a>
+                        <a href="https://wa.me/9647746400400" target="_blank" aria-label="WhatsApp">📱</a>
                     </div>
                 </div>
-
                 <div>
-                    <h4 class="footer__title" data-i18n="footer_quick">روابط سريعة</h4>
+                    <h4 class="footer__title">روابط سريعة</h4>
                     <ul class="footer__links">
-                        <li><a href="../index.html" data-i18n="nav_home">الرئيسية</a></li>
-                        <li><a href="products.html" data-i18n="nav_products">المنتجات</a></li>
-                        <li><a href="about.html" data-i18n="nav_about">من نحن</a></li>
-                        <li><a href="contact.html" data-i18n="nav_contact">تواصل معنا</a></li>
+                        <li><a href="../index.html">الرئيسية</a></li>
+                        <li><a href="products.html">المنتجات</a></li>
+                        <li><a href="about.html">من نحن</a></li>
+                        <li><a href="contact.html">تواصل معنا</a></li>
+                        <li><a href="games.html">ألعاب</a></li>
                     </ul>
                 </div>
-
                 <div>
-                    <h4 class="footer__title" data-i18n="footer_support">الدعم</h4>
+                    <h4 class="footer__title">الدعم</h4>
                     <ul class="footer__links">
-                        <li><a href="warranty.html" data-i18n="footer_warranty">سياسة الضمان</a></li>
-                        <li><a href="returns.html" data-i18n="footer_returns">الاسترجاع</a></li>
-                        <li><a href="faq.html" data-i18n="footer_faq">الأسئلة الشائعة</a></li>
-                        <li><a href="privacy.html" data-i18n="footer_privacy">سياسة الخصوصية</a></li>
+                        <li><a href="warranty.html">سياسة الضمان</a></li>
+                        <li><a href="returns.html">الاسترجاع</a></li>
+                        <li><a href="faq.html">الأسئلة الشائعة</a></li>
+                        <li><a href="privacy.html">سياسة الخصوصية</a></li>
                     </ul>
                 </div>
-
                 <div>
-                    <h4 class="footer__title" data-i18n="footer_contact">معلومات التواصل</h4>
+                    <h4 class="footer__title">معلومات التواصل</h4>
                     <ul class="footer__links">
                         <li>📍 بغداد – السبع أبكار</li>
                         <li>📞 07746400400</li>
@@ -145,10 +374,9 @@
                     </ul>
                 </div>
             </div>
-
             <div class="footer__bottom">
-                <p data-i18n="footer_rights">© 2024 آسيا ستور. جميع الحقوق محفوظة.</p>
-                <p data-i18n="footer_tagline">حيث تبدأ التقنية بثقة.</p>
+                <p>© 2025 آسيا ستور. جميع الحقوق محفوظة.</p>
+                <p>حيث تبدأ التقنية بثقة.</p>
             </div>
         </div>
     </footer>
@@ -156,6 +384,36 @@
     <script src="../js/i18n.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/cart.js"></script>
+    <script src="../js/auth.js"></script>
+    <script>
+        function filterFAQ(category, btn) {
+            document.querySelectorAll('.faq-tab').forEach(t => t.classList.remove('active'));
+            btn.classList.add('active');
+
+            document.querySelectorAll('.faq-item').forEach(item => {
+                if (category === 'all' || item.dataset.faqCat === category) {
+                    item.style.display = '';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Open first FAQ by default
+        document.addEventListener('DOMContentLoaded', () => {
+            const first = document.querySelector('.faq-item');
+            if (first) first.classList.add('open');
+
+            document.querySelectorAll('.faq-item__question').forEach(q => {
+                q.addEventListener('click', () => {
+                    const item = q.closest('.faq-item');
+                    const isOpen = item.classList.contains('open');
+                    document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+                    if (!isOpen) item.classList.add('open');
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
